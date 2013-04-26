@@ -8,6 +8,8 @@ This frees up server resources to handle other tasks, while the user's browser d
 Notice:the plugin same as EasyCheck,this is English Version,the message and user manual in English.
 
 1、Use EasyCheck
+In EasyCheck.css,You can modify ‘.easycheck_okInput’ to define textfiled default style(ok-input);modify ‘.easycheck_errorInput’ to define textfiled error-input style. Or in page redefine css class style to replace default style.
+
 <link rel="stylesheet" type="text/css" href="css/EasyCheck.css"/>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/EasyCheck.min.js"></script>
