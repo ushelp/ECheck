@@ -49,9 +49,26 @@ multiple(min max),range validator:
   <form action="login.action" onsubmit="return easyCheckForm(this)" id="regForm"> 
 
 
+4、forbid validation faliure textfield css 
+ecss =“no”can forbid validation faliure textfield css——.easycheck_errorInput（EasyCheck CSS）。
+<textarea  name=" content" class="required" style="width: 400px;height: 100px;border: 1px solid #D4D0C8;" ecss="no"></textarea>
+
+other，can use global parameter EasyCheck.ecss to forbid all validation faliure textfield css in the page：
+EasyCheck.ecss="no";
 
 
-4、Add New Validator
+5、customized the position of message
+（By default easyCheck will display the error message after the text field but if want to display those message on the custom position, see below：Find a needed position on page, draw a div for error message，set a id，the id format is error_ElementName（error_element's name）
+[info attribute which is optional，after ，this will be the message's prefixion]
+then EasyCheck's message will display in this position you create.）
+
+example：
+<div  id="error_uemail"  info="Login Email"></div> 
+<input  type="text"  name="uemail" value="" class="txt required email" size="20"  /> 
+
+
+
+6、Add New Validator
 //Define your validator function 
 function checkExists(o,e){
 	return EasyCheck.addChkMethod(o,e,

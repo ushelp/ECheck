@@ -1,10 +1,12 @@
-// jQuery EasyCheck Plugin
+// jQuery ECheck Plugin
 //
-// Version 1.9
+// Version 2.0.1
 //
 // Copy By RAY
 // inthinkcolor@gmail.com
 // 2012
+//
+// http://plugins.jquery.com/ECheck/
 //
 var EasyCheck={
 	     "loadChk":true, //use onkeyup or onblur?
@@ -31,8 +33,12 @@ var EasyCheck={
 					eo.removeClass();
 					eo.addClass("easycheck_errorInfo");
 				
-					$(o).removeClass("easycheck_okInput");
-					$(o).addClass("easycheck_errorInput");
+				if(EasyCheck.ecss!="no"){
+						if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){ //forbid validation fail textfield css——easycheck_errorInput
+							$(o).removeClass("easycheck_okInput");
+							$(o).addClass("easycheck_errorInput");
+						}
+					}
 					
 					var info =eo.attr("info");
 					if(info){
@@ -48,8 +54,12 @@ var EasyCheck={
 				var eo = $("[id='error_"+$(o).attr("name")+"']");
 				if(eo){
 					eo.removeClass();
-					$(o).removeClass("easycheck_errorInput");
-					$(o).addClass("easycheck_okInput");
+					if(EasyCheck.ecss!="no"){
+						if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){//forbid validation fail textfield css——easycheck_errorInput
+							$(o).removeClass("easycheck_errorInput");
+							$(o).addClass("easycheck_okInput");
+						}
+					}
 					
 					eo.addClass("easycheck_okInfo");
 					if(msg){
@@ -61,15 +71,19 @@ var EasyCheck={
 								
 			}
 		},
-		"clearAllError":function(){
+	"clearAllError":function(){
 			$("[id^='error_']").each(function(){
 				var oName=$(this).attr("id").replace("error_","");
 				var n=$("[name='"+oName+"']");
-				n.removeClass("easycheck_errorInfo");
-				n.addClass("easycheck_okInput");
+				if(EasyCheck.ecss!="no"){
+					if(!(n.attr("ecss")&&n.attr("ecss")!="yes")){//禁用错误提示时文本框改变样式——easycheck_errorInput
+						n.removeClass("easycheck_errorInfo");
+						n.addClass("easycheck_okInput");
+					}
+				}
 			});
 
-			$("[id^='error_']").hide("");
+			$("[id^='error_']").hide();
 		},
 		"formatMsg":function(){
 			var ary = [];
@@ -137,7 +151,8 @@ var EasyCheck={
 		"easyCheckSubmitDisable":true, 
 		"removeDisableBtn":[], 
 		"removeDisableForm":[],  
-		"removeDisable":false
+		"removeDisable":false,
+		"ecss":"yes" 
 }
 /*
  validator list
