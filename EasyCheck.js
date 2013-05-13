@@ -1,6 +1,6 @@
 // jQuery ECheck Plugin
 //
-// Version 2.0.1
+// Version 2.0.2
 //
 // Copy By RAY
 // inthinkcolor@gmail.com
@@ -427,12 +427,11 @@ function easyCheckForm(eleArea){
 					var chkrule= EasyCheck.chkList[i];  
 				    addChkForm(chkrule,fromChkInfo); 
 				}				
-			
 	
 				if(fromChkInfo.chkFlag==true&&EasyCheck['easyCheckSubmitDisable']==true){		
-							$(fromChkInfo.eleArea+":submit").attr("disabled","true");
+						$(":submit",$(fromChkInfo.eleArea)).attr("disabled","true");
 				}else{		
-							$(fromChkInfo.eleArea+":submit").removeAttr("disabled");
+						$(":submit",$(fromChkInfo.eleArea)).removeAttr("disabled");
 				}
 				 return fromChkInfo.chkFlag;
 }
@@ -449,9 +448,8 @@ $(function(){
 		$("form :submit").removeAttr("disabled");
 	}else{
 		for(var i=0;i<EasyCheck.removeDisableForm.length;i++){
-			$("[id='"+EasyCheck.removeDisableForm[i]+"'] :submit").removeAttr("disabled");
+			$(":submit",$("#"+EasyCheck.removeDisableForm[i])).removeAttr("disabled");
 		}
 	}
-	
 
 });
