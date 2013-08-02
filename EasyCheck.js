@@ -1,6 +1,6 @@
 // jQuery ECheck Plugin
 //
-// Version 2.0.2
+// Version 2.1.0
 //
 // Copy By RAY
 // inthinkcolor@gmail.com
@@ -9,9 +9,9 @@
 // http://plugins.jquery.com/ECheck/
 //
 var EasyCheck={
-	     "loadChk":true, //use onkeyup or onblur?
-	     "blurChk":true,   //use onblur? 
-		"keyupChk":true, //use onkeyup?
+	    "loadChk":true,  //use onkeyup or onblur?
+	    "blurChk":true,     //use onblur? 
+		"keyupChk":true,  //use onkeyup?
 	    "email":/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
 	     "url":/^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
 	    "number":/^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/,
@@ -23,19 +23,23 @@ var EasyCheck={
 		"Require" : /.+/,
 		"ipv4":/^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/i,
 		"ipv6":/^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$/,
-	   "showError":function(o,msg){  //show error msg
-			var eo = $("[id*='error_"+$(o).attr("name")+"']");
-			if(eo.size()==0){
-				     $(o).after("<div id='error_"+$(o).attr("name")+"'></div>"); //create msg div
-					 eo = $("[id='error_"+$(o).attr("name")+"']");
+	   "showError":function(o,msg){  
+		   var eo = $("#ok_"+$(o).attr("name"));
+			if(eo){ 
+				eo.hide();
 			}
-				
+		   
+			 eo = $("#error_"+$(o).attr("name"));
+			if(eo.size()==0){
+				     $(o).after("\r\n<div id='error_"+$(o).attr("name")+"'></div>"); 
+					 eo = $("#error_"+$(o).attr("name"));
+			}
 					eo.removeClass();
 					eo.addClass("easycheck_errorInfo");
 				
-				if(EasyCheck.ecss!="no"){
-						if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){ //forbid validation fail textfield css——easycheck_errorInput
-							$(o).removeClass("easycheck_okInput");
+					if(EasyCheck.ecss!="no"){
+						if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){
+							$(o).removeClass(EasyCheck.okcss);
 							$(o).addClass("easycheck_errorInput");
 						}
 					}
@@ -50,15 +54,15 @@ var EasyCheck={
 		
 			
 		},
-		"clearError":function(o,msg){   //OK MSG
-				var eo = $("[id='error_"+$(o).attr("name")+"']");
+		"clearError":function(o,msg){   
+				var eo = $("#error_"+$(o).attr("name"));
 				if(eo){
 					eo.removeClass();
 					if(EasyCheck.ecss!="no"){
-						if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){//forbid validation fail textfield css——easycheck_errorInput
-							$(o).removeClass("easycheck_errorInput");
-							$(o).addClass("easycheck_okInput");
-						}
+					if(!($(o).attr("ecss")&&$(o).attr("ecss")!="yes")){
+						$(o).removeClass("easycheck_errorInput");
+						$(o).addClass(EasyCheck.okcss);
+					}
 					}
 					
 					eo.addClass("easycheck_okInfo");
@@ -68,7 +72,7 @@ var EasyCheck={
 						eo.html("");	
 					}
 					eo.hide();
-								
+					
 			}
 		},
 	"clearAllError":function(){
@@ -76,9 +80,9 @@ var EasyCheck={
 				var oName=$(this).attr("id").replace("error_","");
 				var n=$("[name='"+oName+"']");
 				if(EasyCheck.ecss!="no"){
-					if(!(n.attr("ecss")&&n.attr("ecss")!="yes")){//禁用错误提示时文本框改变样式——easycheck_errorInput
+					if(!(n.attr("ecss")&&n.attr("ecss")!="yes")){
 						n.removeClass("easycheck_errorInfo");
-						n.addClass("easycheck_okInput");
+						n.addClass(EasyCheck.okcss);
 					}
 				}
 			});
@@ -87,46 +91,64 @@ var EasyCheck={
 		},
 		"formatMsg":function(){
 			var ary = [];
- 			 for(i = 1 ; i < arguments.length ; i++){
+ 			 for(var i = 1 ; i < arguments.length ; i++){
   				 ary.push(arguments[i]);
 		  }
 		   return arguments[0].replace(/\{(\d+)\}/g,function(m ,i){
   				 return ary[i];
  			 });
 		}		,
-			/*
-	Define new validator，invoke EasyCheck.addChkMethod(o,e,chkCode,msg)  to register 
-	o DOM element
-	e event
-	chkCode callback validation function 
-	msg show error message
+		/*
+		Define new validator，invoke EasyCheck.addChkMethod(o,e,chkCode,msg)  to register 
+		o DOM element
+		e event
+		chkCode callback validation function 
+		msg show error message
 
-	*/
+		*/
 		"addChkMethod":function (o,e,chkCode,msg){
-			if(!chkCode(o)){
+			 var de= $("#default_"+$(o).attr("name"));
+			 if(de){ 
+				 de.hide();
+			  }
+			if(!chkCode(o)){ 
+				 var de= $("#default_"+$(o).attr("name"));
+				 if(de){ 
+					 de.hide();
+				  }	
 					EasyCheck.showError(o,msg);
 					if(e){
-							e.stopImmediatePropagation(); //stop event pop
+							e.stopImmediatePropagation(); 
 					}
 					return false;
-		  }else{
+		  }else{ 
 				  EasyCheck.clearError(o);
+				  var defaultDiv= $("#default_"+$(o).attr("name"));
+					if(defaultDiv){ 
+						defaultDiv.hide();
+					 }	
+			  var okDiv = $("#ok_"+$(o).attr("name"));
+				  
+				if(okDiv){ 
+					okDiv.addClass("easycheck_okInfo");
+					okDiv.show();
+				}
 				 return true;
 		  }
 	}
 	,
-		/*
-			validator Object(validatorName,validatorFunction[,isAttributeValidator])
-			when is a attribute validator ,set isAttributeValidator=true 
-	*/
+	/*
+	validator Object(validatorName,validatorFunction[,isAttributeValidator])
+	when is a attribute validator ,set isAttributeValidator=true 
+*/
 	"ChkRule":function(chkName,chkFunction,chkAttr){
 			this.chkName=chkName;
 			this.chkFunction=chkFunction;
 			this.chkAttr=chkAttr;
 	},
 	"chkList":"",  //validator list
-    "msg":{  //validator msg list
-		"required":"Is required",
+    "msg":{//validator msg list
+    	"required":"Is required",
 		"email":"Invalid email",
 		"url":"Invalid url",
 		"number":"Invalid number",
@@ -148,15 +170,16 @@ var EasyCheck={
 		"easyCheckBlurIgnore":{},  
 		"easyCheckKeyupIgnore":{},   
 		"easyCheckEleIgnore":{},
-		"easyCheckSubmitDisable":true, 
+		"easyCheckSubmitDisable":true,  
 		"removeDisableBtn":[], 
 		"removeDisableForm":[],  
-		"removeDisable":false,
-		"ecss":"yes" 
+		"removeDisable":false, 
+		"ecss":"yes", 
+		"okcss":"easycheck_okInput"
 }
 /*
- validator list
- can register your expand
+validator list
+can register your expand
 */
 EasyCheck.chkList=[
  		new EasyCheck.ChkRule("required",checkRequired),
@@ -177,18 +200,39 @@ EasyCheck.chkList=[
 		new  EasyCheck.ChkRule("vc",checkVc,true)
  ];
  
+/*
+ * ignore validator element
+ */  
+ EasyCheck.easyCheckIgnore["vc"]=true;  //vc validator only work on form validation
+ //EasyCheck.easyCheckBlurIgnore["vc"]=true;
+// EasyCheck.easyCheckKeyupIgnore["vc"]=true;
+
  /*
-  * ignore validator element
-  */  
-  EasyCheck.easyCheckIgnore["vc"]=true;  //vc validator only work on form validation
-  //EasyCheck.easyCheckBlurIgnore["vc"]=true;
- // EasyCheck.easyCheckKeyupIgnore["vc"]=true;
+ * ignore validator element
+ */  
+ EasyCheck.easyCheckEleIgnore["uservc"]=true; //uservc Element only form validation
+
  
-  /*
-  * ignore validator element
-  */  
-  EasyCheck.easyCheckEleIgnore["uservc"]=true; //uservc Element only form validation
- 
+  
+  /*check username exists DEMO
+  function checkExists(o,e){
+	 	 return EasyCheck.addChkMethod(o,e,
+				 function(o){
+					 var val=$(o).val();
+					 var res=false;
+					 dwr.engine.setAsync(false);
+						 UserInfoDWR.checkEmail(val,function(d){
+							 res=d;
+						 });
+						 if(res=="true"){
+							 CompanyInfoDWR.checkEmail(val,function(d){
+								 res=d;
+							 });
+						 }
+					 return res;
+				},
+				EasyCheck.msg["exists"]);
+	 }*/
 
   
  function checkVc(o,e){
@@ -214,18 +258,16 @@ EasyCheck.chkList=[
 			},
 			EasyCheck.msg["regexp"]);
   }
-
+   
      function checkExtension(o,e){
-		 ex="png,jpeg,jpg,gif";
+		 ex=$(o).attr("extension");
 	   return EasyCheck.addChkMethod(o,e,
 			 function(o){
 				 var val=$(o).val();
-				 ex=$(o).attr("extension");
 				 
 				 var extensionList=ex!=""?ex.replace(/,/g, '|'):"png|jpe?g|gif";
 				 return!($.trim(val)!=""&&!val.match(new RegExp(".(" + extensionList + ")$", "i")));
-			},
-				EasyCheck.formatMsg(EasyCheck.msg["extension"],ex));
+			},EasyCheck.formatMsg(EasyCheck.msg["extension"],ex));
   }
 
 
@@ -282,7 +324,7 @@ function checkEqualto(o,e){
 		return EasyCheck.addChkMethod(o,e,
 			 function(o){
 				 var val=$(o).val();
-				 return !(val!=$("[id='"+$(o).attr("equalto")+"']").val());
+				 return !(val!=$("#"+$(o).attr("equalto")).val());
 			},
 				EasyCheck.msg["equalto"]);
 }
@@ -352,6 +394,23 @@ function checkMax(o,e){
 			EasyCheck.formatMsg(EasyCheck.msg["min"],$(o).attr("min")));	
 }
 
+	/*
+	eg. user-defined example
+	*/
+	function checkNew(o,e){		
+		return EasyCheck.addChkMethod(o,e,
+			 function(o){
+			
+			
+			
+			},
+			"验证失败时的消息字符串");
+	}
+
+
+
+
+
 
 function chk(o,e,chkFunction){  //callback function
 
@@ -369,7 +428,28 @@ function addChk(chkrule){
 			}
 		}).on("focus",function(e){
 				
-				  		 EasyCheck.clearError(this);
+				EasyCheck.clearError(this);
+				 var okDiv = $("#ok_"+$(this).attr("name"));
+				 if(okDiv.length>0){ 
+					
+					 if(okDiv.filter(":hidden").length>0){ 
+						  
+								var defaultDiv = $("#default_"+$(this).attr("name"));
+								if(defaultDiv){
+									defaultDiv.show();
+								}
+					 }
+					 
+				 }else{
+					
+						var defaultDiv = $("#default_"+$(this).attr("name"));
+						if(defaultDiv){
+							defaultDiv.show();
+						} 
+				 }
+				 
+				
+
 					
 				
 		}).on("keyup",function(e){ 
@@ -398,35 +478,38 @@ function addChkForm(chkrule,fromChkInfo){
 
 
 
-
+	
 	function easyCheck(){
-
+		
+	
 		for(var i=0;i< EasyCheck.chkList.length;i++){
 				var chkrule= EasyCheck.chkList[i];
 				if(!EasyCheck.easyCheckIgnore[chkrule.chkName]){
-					addChk(chkrule);  //callback function
+					addChk(chkrule);   //callback function
 				}
 		}
 	}
 	
 
 
-/*
-onsubmit,form validation 
-*/
+	/*
+	onsubmit,form validation 
+	*/
 function easyCheckForm(eleArea){
 				var fromChkInfo={
-					"eleArea":"[id='"+$(eleArea).attr("id")+"'] ", 
+					"eleArea":"[id='"+$(eleArea).attr("id")+"'] ",  
 					"chkFlag":true,   
 					"errorEleArray":new Array()
 				};
 			
 
-		
+				
+				/*注册Form类验证*/
 				for(var i=0;i< EasyCheck.chkList.length;i++){
 					var chkrule= EasyCheck.chkList[i];  
-				    addChkForm(chkrule,fromChkInfo); 
+				    addChkForm(chkrule,fromChkInfo);  
 				}				
+			
 	
 				if(fromChkInfo.chkFlag==true&&EasyCheck['easyCheckSubmitDisable']==true){		
 						$(":submit",$(fromChkInfo.eleArea)).attr("disabled","true");
@@ -451,5 +534,10 @@ $(function(){
 			$(":submit",$("#"+EasyCheck.removeDisableForm[i])).removeAttr("disabled");
 		}
 	}
+	$("[id*='ok_']").hide();
+	
+		
+		
+	
 
 });
