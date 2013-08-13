@@ -24,15 +24,15 @@ var EasyCheck={
 		"ipv4":/^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/i,
 		"ipv6":/^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$/,
 	   "showError":function(o,msg){  
-		   var eo = $("#ok_"+$(o).attr("name"));
+		   var eo = $("[id='ok_"+$(o).attr("name")+"']");
 			if(eo){ 
 				eo.hide();
 			}
 		   
-			 eo = $("#error_"+$(o).attr("name"));
+			 eo = $("[id='error_"+$(o).attr("name")+"']");
 			if(eo.size()==0){
 				     $(o).after("\r\n<div id='error_"+$(o).attr("name")+"'></div>"); 
-					 eo = $("#error_"+$(o).attr("name"));
+					 eo = $("[id='error_"+$(o).attr("name")+"']");
 			}
 					eo.removeClass();
 					eo.addClass("easycheck_errorInfo");
@@ -55,7 +55,7 @@ var EasyCheck={
 			
 		},
 		"clearError":function(o,msg){   
-				var eo = $("#error_"+$(o).attr("name"));
+				var eo = $("[id='error_"+$(o).attr("name")+"']");
 				if(eo){
 					eo.removeClass();
 					if(EasyCheck.ecss!="no"){
@@ -107,12 +107,12 @@ var EasyCheck={
 
 		*/
 		"addChkMethod":function (o,e,chkCode,msg){
-			 var de= $("#default_"+$(o).attr("name"));
+			 var de= $("[id='default_"+$(o).attr("name")+"']");
 			 if(de){ 
 				 de.hide();
 			  }
 			if(!chkCode(o)){ 
-				 var de= $("#default_"+$(o).attr("name"));
+				 var de= $("[id='default_"+$(o).attr("name")+"']");
 				 if(de){ 
 					 de.hide();
 				  }	
@@ -123,11 +123,11 @@ var EasyCheck={
 					return false;
 		  }else{ 
 				  EasyCheck.clearError(o);
-				  var defaultDiv= $("#default_"+$(o).attr("name"));
+				  var defaultDiv= $("[id='default_"+$(o).attr("name")+"']");
 					if(defaultDiv){ 
 						defaultDiv.hide();
 					 }	
-			  var okDiv = $("#ok_"+$(o).attr("name"));
+			  var okDiv = $("[id='ok_"+$(o).attr("name")+"']");
 				  
 				if(okDiv){ 
 					okDiv.addClass("easycheck_okInfo");
@@ -324,7 +324,7 @@ function checkEqualto(o,e){
 		return EasyCheck.addChkMethod(o,e,
 			 function(o){
 				 var val=$(o).val();
-				 return !(val!=$("#"+$(o).attr("equalto")).val());
+				 return !(val!=$("[id='"+$(o).attr("equalto")).val()+"']");
 			},
 				EasyCheck.msg["equalto"]);
 }
@@ -429,12 +429,12 @@ function addChk(chkrule){
 		}).on("focus",function(e){
 				
 				EasyCheck.clearError(this);
-				 var okDiv = $("#ok_"+$(this).attr("name"));
+				 var okDiv = $("[id='ok_"+$(this).attr("name")+"']");
 				 if(okDiv.length>0){ 
 					
 					 if(okDiv.filter(":hidden").length>0){ 
 						  
-								var defaultDiv = $("#default_"+$(this).attr("name"));
+								var defaultDiv = $("[id='default_"+$(this).attr("name")+"']");
 								if(defaultDiv){
 									defaultDiv.show();
 								}
@@ -442,7 +442,7 @@ function addChk(chkrule){
 					 
 				 }else{
 					
-						var defaultDiv = $("#default_"+$(this).attr("name"));
+						var defaultDiv = $("[id='default_"+$(this).attr("name")+"']");
 						if(defaultDiv){
 							defaultDiv.show();
 						} 
@@ -524,14 +524,14 @@ $(function(){
 	EasyCheck.loadChk?easyCheck():'';
 
 	for(var i=0;i<EasyCheck.removeDisableBtn.length;i++){
-		$("#"+EasyCheck.removeDisableBtn[i]).removeAttr("disabled");
+		$("[id='"+EasyCheck.removeDisableBtn[i]+"']").removeAttr("disabled");
 	}
 
 	if(EasyCheck.removeDisable==true){
 		$("form :submit").removeAttr("disabled");
 	}else{
 		for(var i=0;i<EasyCheck.removeDisableForm.length;i++){
-			$(":submit",$("#"+EasyCheck.removeDisableForm[i])).removeAttr("disabled");
+			$(":submit",$("[id='"+EasyCheck.removeDisableForm[i]+"']")).removeAttr("disabled");
 		}
 	}
 	$("[id*='ok_']").hide();
