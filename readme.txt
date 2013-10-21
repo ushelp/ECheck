@@ -189,17 +189,7 @@ other，can use global parameter EasyCheck.ecss to forbid all validation faliure
 EasyCheck.ecss="no";
 
 
-7.customized the position of message
-（By default easyCheck will display the error message after the text field but if want to display those message on the custom position, see below:Find a needed position on page, draw a div for error message，set a id，the id format is error_ElementName（error_element's name）
-[info attribute which is optional，after ，this will be the message's prefixion]
-then EasyCheck's message will display in this position you create.）
-
-example:
-<div  id="error_uemail"  info="Login Email"></div> 
-<input  type="text"  name="uemail" value="" class="txt required email" size="20"  /> 
-
-
-8.Custom message content
+7.Custom global error message content
 Introduction EasyCheck.js the page, use the following syntax, you can modify the validation rules specified prompt message:
 EasyCheck.msg ['required'] = "is required";
 
@@ -222,6 +212,47 @@ required can not be empty
 		"regexp":"Invalid value",
 		 "extension":"Invalid extension,only {0}",
 		 "vc":"Didn't match the word verification" //verifycode
+
+
+
+customized the position of message
+（By default easyCheck will display the error message after the text field but if want to display those message on the custom position, see below:Find a needed position on page, draw a div for error message，set a id，the id format is error_ElementName（error_element's name）
+[info attribute which is optional，after ，this will be the message's prefixion]
+then EasyCheck's message will display in this position you create.）
+
+example:
+<div  id="error_uemail"  info="Login Email"></div> 
+<input  type="text"  name="uemail" value="" class="txt required email" size="20"  /> 
+
+
+8.Customize the default , correct error
+EasyCheck support manually specify the default message , error messages , the correct message. If you need to specify the default prompt and correct prompted, provide the following named DIV id can :
+
+Default Tip : default_ validation element's name
+Error Tip: error_ verification element name ( uses .easycheck_errorInfo style )
+Correct Tip : ok_ verification element name ( uses .easycheck_okInfo style )
+
+Example:
+<div id="default_uname2" style="display: inline;"> required , start with a letter and can only contain letters and numbers </ div>
+<div id="ok_uname2" style="display: inline;"> right </ div>
+<div id="error_uname" prefix="user name" style="display: inline;"> </ div>
+<div id="error_uemail" info="input email please" style="display: inline;"> </ div>
+
+By default, the error message is automatically created and displayed in the text box after . If you want to display a message in the specified location , you can set the following: Create a suitable location in the page message prompts div, to display the message div specified id, name format must be error_ElementName (error_ verification element name)
+info: optional attribute error messages ( overrides the default prompt )
+perfix: optional attribute error message prefix.
+EasyCheck validation plugin prompt message will appear on your div specified location.
+
+Example:
+<tr>
+      <td align="left" width="300px">
+       <label class="lbl"> <div style="color:#FF0000; display:inline"> * </ div> Login Email </ label>
+          <div id="error_uemail" info="input email please!"> </ div>
+       / td>
+</ tr>
+<tr>
+        <td align="left"> <input type="text" name="uemail" value="" class="txt required email" size="20" /> </ td>
+</ tr>
 
 
 
