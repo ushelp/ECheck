@@ -34,68 +34,33 @@ According to the actual needs of the project can be adjusted, please. Easycheck_
 
 / * CSS Document * /
 / * Div style does not pass validation * /
-. Easycheck_errorInfo {
-padding: 2px 8px;
-padding-left: 8px;
-height: 30px;
-font-family: Microsoft elegant black, Arial, Helvetica, sans-serif;
-margin-left: 10px;
-font-size: 15px;
-line-height: 30px;
-background-color: # FF6600;
-color: # fff;
-display: inline;
-font-weight: bold;
+.easycheck_errorInfo {
+	padding: 2px 8px;
+	margin-left: 10px;
+	background-color:#FFE6BF;
+	color:#BF6200;
+	display: inline;
+	font-weight: bold;
 }
 / * Verify through a div style * /
-. Easycheck_okInfo {
-padding: 3px 8px;
-height: 30px;
-font-family: Microsoft elegant black, Arial, Helvetica, sans-serif;
-margin-left: 10px;
-font-size: 15px;
-line-height: 30px;
-background-color: # 7AC935;
-color: # fff;
-display: inline;
-font-weight: bold;
+.easycheck_okInfo {
+	padding: 2px 8px;
+	margin-left: 10px;
+	background-color: #7AC935;
+	color: #fff;
+	display: inline;
+    font-weight: bold;
 }
 / * Verify text box style fail * /
-. Easycheck_errorInput {
-height: 30px;
-font-size: 14px;
-text-shadow: 0 0 0 rgba (0, 0, 0, 0.3);
-border: 1px solid # DD080A;
-text-indent: inherit;
-font-weight: normal;
-line-height: 30px;
-background: # fff;
-font-family: "Microsoft elegant black", sans-serif, Verdana, Arial, Helvetica, Tahoma, "Times New Roman";
-margin-right: 10px;
-width: 325px;
-margin: 0px 0 0 10px;
-letter-spacing: 1px;
+.easycheck_errorInput {
+	border: 1px solid #DD080A;
 }
 / * Verify through the default text box style, with a text box the default style is consistent! * /
-. Easycheck_okInput {
-height: 30px;
-font-size: 14px;
-text-shadow: 0 0 0 rgba (0, 0, 0, 0.3);
-border: 1px solid # cfcfc9;
-text-indent: inherit;
-font-weight: normal;
-line-height: 30px;
-background: # fff;
-font-family: "Microsoft elegant black", sans-serif, Verdana, Arial, Helvetica, Tahoma, "Times New Roman";
-margin-right: 10px;
-width: 325px;
-margin: 0px 0 0 10px;
-letter-spacing: 1px;
+.easycheck_okInput {
+	border: 1px solid #cfcfc9;
 }
 
 2.USE Validator
-
-
 
 required 	        <input type="text" name="name" class="required"/>
 email 		       	<input type="text" name="name" class="email"/>
@@ -145,8 +110,8 @@ multiple(min max),range validator:
 <input  type="password" value=""  name="urepwd" size="20"  class="txt required"  min="20" max="40"/>
 
 
-3.Form Validation ,only set id and onsubmit="return easyCheckForm(this)" 
-  <form action="login.action" onsubmit="return easyCheckForm(this)" id="regForm"> 
+3.Form Validation ,only set id and onsubmit="return EasyCheck.easyCheckForm(this)" 
+  <form action="login.action" onsubmit="return EasyCheck.easyCheckForm(this)" id="regForm" method="post"> 
 
 
 4.Prevent duplicate form submission function client
@@ -256,11 +221,26 @@ Example:
 
 
 
-9.Manually clear all error messages
-For example validates the form in the pop-up layer, open the layer, clear layer forms prior message.
-Direct call
-EasyCheck.clearAllError();
-Can be.
+9.Manually remove and set the error message
+EasyCheck.clearAllError ([formId]);
+Clear all error messages , formId is optional :
+When specified, only the specified form in clear error message ; do not specify , clear the current page for all error messages.
+
+EasyCheck.restoreAll ([formId]);
+Restore messages. Clear error and clear the correct prompt displays the default prompt.
+For example, the verification form in the pop-up layer , the layer reopen closed , empty layer forms before the message.
+formId is optional :
+When specified, only the specified form in clear error message ; do not specify , clear the current page for all error messages.
+
+EasyCheck.showError ('elementId' | elementDOM, 'msg');
+Set error messages to the specified form elements manually .
+For example , you can use this method to display the specified message is returned from the server .
+elementId | elementDOM: id specified form elements or form elements DOM object.
+msg: the error message.
+
+EasyCheck.clearError ('elementId' | elementDOM);
+Clear form elements specified error message.
+elementId | elementDOM: id specified form elements or form elements DOM object.
 
 
 
@@ -320,43 +300,23 @@ EasyCheck.easyCheckBlurIgnore ["vc"] = true;
 EasyCheck.easyCheckKeyupIgnore ["vc"] = true;
  EasyCheck.easyCheckEleIgnore keyboard pops up and loses focus ignore the validation of the DOM element name (only valid form is submitted).
 EasyCheck.easyCheckEleIgnore ["uservc"] = true;
-11, Advanced Extension: prompt message validation framework maintenance management
-In order to facilitate the prompt message management and internationalization. Prompt message can be defined in the EasyCheck. Msg list:
-  msg: {
-"Required": "not empty"
-"Email": "Email format is not correct,"
-"Url": "URL input errors,"
-"Number": "must be a number"
-"Digits": "must be an integer"
-"Equalto": "Enter inconsistent"
-"Equallength": "{0} length must be bit"
-"Minlength] [maxlength": "length must be between {0} to {1} between"
-"Minlength": "Length can not be less than {0}",
-"Maxlength": "length can not be greater than {0}",
-"Min] [max": "The value must be between {0} and {1} between"
-"Min": "not be less than {0}",
-"Max": "can not be greater than {0}",
-"RegExp": "malformed"
-"Extension": "file extension can only be {0}",
-"Vc": "input error"
-       "Custom message name": "message content, you can use {0}, {1} ...... placeholder"
-}
 
- in a custom validation function new message prompts section, use EasyCheck.msg ["custom message name"] to get the message content
-Such as:
+12, Advanced Extension: prompt message validation framework maintenance management
+11.1 , in order to facilitate the prompt message management. You can define the prompt message in EasyCheck. Msg list.
+EasyCheck.msg [" custom message name " ] = " message content , you can use { 0 } , { 1} ...... placeholder" ;
+
+11.2 , the validation function from the new definition of news tips section, use EasyCheck.msg [" custom message name " ] to get the message content , such as:
 EasyCheck.msg ["required"]
 function checkNew (o, e) {
 return EasyCheck. addChkMethod (o, e,
 function (o) {
-/ / Verify implementation returns true or false: true representatives verified through; false representatives did not pass, a message will be displayed msg
-/ / Return $. Trim (val)! = "";
+/ / Verify implementation returns true or false: true representatives validated ; false representatives did not pass , msg message will be displayed
+.! / / return $ trim (val) = "";
 }, EasyCheck.msg ["required"]);
 }
 
- If a message has placeholders (such as "length must be between {0} to {1} between"), then call EasyCheck.formatMsg ("message content", "placeholder parameter value 1", ......) for the Message Assignment format
-Such as:
+11.3 If a message has placeholders ( such as " length must be between {0} and {1} " ) , the call EasyCheck.formatMsg (" message content ", " placeholder parameter 1 " , ...... ) for the message assignment format , such as:
 EasyCheck.formatMsg (EasyCheck.msg ["minlength] [maxlength"], $ (o). Attr ("minlength"), $ (o). Attr ("maxlength"))
-
 
 
 online Demo:http://www.lightfeel.com/EasyCheck/en/demo.jsp
