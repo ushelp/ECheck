@@ -8,9 +8,9 @@
 "validate",
 "validation",
 "fvalidator",
-"input","jquery","ui","echeck","easycheck"
+"input","jquery","ui","echeck","easycheck","easy"
     ],
-    "version": "2.3.0",
+    "version": "3.0.0",
     "author": {
         "name": "Ray",
 "email": "inthinkcolor@gmail.com",
@@ -31,9 +31,9 @@
     ],
     "bugs": "https://github.com/ushelp/ECheck/issues",
     "homepage": "https://github.com/ushelp/ECheck",
-    "docs": "https://github.com/ushelp/ECheck/blob/master/readme.txt",
+    "docs": "https://github.com/ushelp/ECheck/blob/master/readme.html",
     "download": "https://github.com/ushelp/ECheck/archive/master.zip",
-	"demo":"http://www.lightfeel.com/EasyCheck/en/demo.jsp",
+	"demo":"http://www.lightfeel.com/easy/easycheck/zh-cn/index.jsp",
     "dependencies": {
         "jquery": ">=1.5"
     }
