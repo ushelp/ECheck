@@ -4,15 +4,15 @@
 
 
 Notice:the plugin same as EasyCheck,this is English Version,the message and user manual in English.   
-说明：该插件与EasyChec插件为同一插件，是EasyCheck的英文版本，中文版本请参考:<https://github.com/ushelp/EasyCheck>
+说明：该插件与EasyChec插件为同一插件，是EasyCheck的英文版本，中文版本请参考 GitHub:<https://github.com/ushelp/EasyCheck>
 
 
 
 
 
-EasyCheck is a front-end JS form validation plugin, without programming through HTML forms authentication enhancements to complete the work , simplifying the front-end development work, and to maintain a unified verification style , and improve efficiency. The biggest feature is the use of lightweight components and , but with complete flexibility and strong scalability, support for class-based , based on a combination of attributes and validators . EasyCheck developed to meet the daily built- dozen common validator ; support the text box to verify automatically switch styles ; default , error messages and correct the contents of the three DIV tips ; and support for custom message prompts position ; support for anti- client duplicate submission function ; also supports registered users to develop new validator for expansion.
+EasyCheck is a front-end JS form validation plugin based on jQuery, without programming through HTML forms authentication enhancements to complete the work , simplifying the front-end development work, and to maintain a unified verification style , and improve efficiency. The biggest feature is the use of lightweight components and , but with complete flexibility and strong scalability, support for class-based , based on a combination of attributes and validators . EasyCheck developed to meet the daily built- dozen common validator ; support the text box to verify automatically switch styles ; default , error messages and correct the contents of the three DIV tips ; and support for custom message prompts position ; support for anti- client duplicate submission function ; also supports registered users to develop new validator for expansion.
 
-Compatibility : EasyDataTable fully compatible with IE6 and above , Firefox, Chrome, Safari, Opera and other kernel (Trident, Gecko, Webkit, Presto) browser , and is compatible with multiple platforms and systems (PC, TabletPC, Mobile).
+**Compatibility **: EasyDataTable fully compatible with IE6 and above , Firefox, Chrome, Safari, Opera and other kernel (Trident, Gecko, Webkit, Presto) browser , and is compatible with multiple platforms and systems (PC, TabletPC, Mobile).
 
 
 ----------
@@ -32,6 +32,7 @@ Compatibility : EasyDataTable fully compatible with IE6 and above , Firefox, Chr
         //Style form elements actually used to specify when the error message , you need to switch the default class style form elements , if the default class style form elements are not using . easycheck_defaultInput, you must
 		EasyCheck.defaultCss="txt";   
     </script>
+
 
 
 ### EasyCheck.css Description : 
