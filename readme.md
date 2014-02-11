@@ -14,6 +14,8 @@ EasyCheck is a front-end JS form validation plugin based on jQuery, without prog
 
 **Compatibility **: EasyDataTable fully compatible with IE6 and above , Firefox, Chrome, Safari, Opera and other kernel (Trident, Gecko, Webkit, Presto) browser , and is compatible with multiple platforms and systems (PC, TabletPC, Mobile).
 
+### [The official site](http://www.lightfeel.com/easy/easycheck/en/index.jsp 'EasyCheck  official site home page')
+
 
 ----------
 
@@ -136,7 +138,7 @@ Simultaneous use of multiple classes validators , separated by spaces :
 
 Validated when the form is submitted, the form of `form` id `add the specified attribute` and `onsubmit =" return EasyCheck.checkForm (this) "` event to
 
-	<form action="login.action" onsubmit="return EasyCheck.checkForm(this)" id="regForm" method="post">action" onsubmit="return EasyCheck.checkForm(this)" id="regForm" method="post"> 
+	<form action="login.action" onsubmit="return EasyCheck.checkForm(this)" id="regForm" method="post">
 
 
 ## 4, to prevent duplicate submission form functional client
@@ -254,9 +256,9 @@ Name and default value `EasyCheck.msg` default message list as follows :
       max:"The maximum value of {0}",
       regexp:"Invalid value",
       extension:"Invalid extension,only {0}",
-      vc:"Didn't match the word verification"
+      vc:"Didn't match the word verification",
 
-      lengthrange:"Please use between {0} and {1} characters"
+      lengthrange:"Please use between {0} and {1} characters",
       numberrange:"Value is between{0}and{1}"
 
 ## 8 , custom default , correct error message
@@ -540,6 +542,17 @@ Messages via `EasyCheck.formatMsg (" message content "," placeholder parameter 1
 
 
 
-[Demo online](http://www.lightfeel.com/easy/easycheck/en/index.jsp 'Demo online')
+[Demo online](http://www.lightfeel.com/easy/easycheck/en/index.jsp#demo 'Demo online')
 
 Contact, feedback, custom Email: <in.think@gmail.com>
+
+<p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="inthinkcolor@gmail.com">
+<input type="hidden" name="item_name" value="EasyProject development Donation">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="tax" value="0">
+<input type="image" src="http://www.lightfeel.com/easy/images/paypaldonation5.jpg"  title="PayPal donation"  border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</P>

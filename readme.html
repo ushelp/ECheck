@@ -295,6 +295,7 @@ img {
 <p>Notice:the plugin same as EasyCheck,this is English Version,the message and user manual in English.<br>说明：该插件与EasyChec插件为同一插件，是EasyCheck的英文版本，中文版本请参考 GitHub:<a href="https://github.com/ushelp/EasyCheck">https://github.com/ushelp/EasyCheck</a></p>
 <p>EasyCheck is a front-end JS form validation plugin based on jQuery, without programming through HTML forms authentication enhancements to complete the work , simplifying the front-end development work, and to maintain a unified verification style , and improve efficiency. The biggest feature is the use of lightweight components and , but with complete flexibility and strong scalability, support for class-based , based on a combination of attributes and validators . EasyCheck developed to meet the daily built- dozen common validator ; support the text box to verify automatically switch styles ; default , error messages and correct the contents of the three DIV tips ; and support for custom message prompts position ; support for anti- client duplicate submission function ; also supports registered users to develop new validator for expansion.</p>
 <p><strong>Compatibility </strong>: EasyDataTable fully compatible with IE6 and above , Firefox, Chrome, Safari, Opera and other kernel (Trident, Gecko, Webkit, Presto) browser , and is compatible with multiple platforms and systems (PC, TabletPC, Mobile).</p>
+<h3 id="-the-official-site-http-www-lightfeel-com-easy-easycheck-en-index-jsp-easycheck-official-site-home-page-"><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp" title="EasyCheck  official site home page">The official site</a></h3>
 <hr>
 <h2 id="1-the-introduction-easycheck-css-after-introduction-easycheck-js-jquery">1,the introduction EasyCheck.css, after introduction EasyCheck.js jQuery</h2>
 <pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/EasyCheck.css&quot;/&gt;  
@@ -386,7 +387,7 @@ Server-side custom processing Demo (JSP):
 <p><strong>Note : According to the principle EasyCheck internal validation , EasyCheck not mandatory user for each form element must specify the id attribute , you can simplify routine element definitions . But if the page exists <code>name</code> same form elements , you need to distinguish between the use of id . Elements are present in the form <code>id attribute</code>, <code>id</code> attribute takes precedence over the <code>name</code> attribute , EasyCheck internal <code>will</code> id attribute value as a reference to identify various functions to achieve - for example, the need to achieve the element associated with the specified expansion , when the configuration operations , priority <code>id</code>.</strong></p>
 <h2 id="3-when-the-form-is-submitted-to-verify">3, when the form is submitted to verify</h2>
 <p>Validated when the form is submitted, the form of <code>form</code> id <code>add the specified attribute</code> and <code>onsubmit =&quot; return EasyCheck.checkForm (this) &quot;</code> event to</p>
-<pre><code>&lt;form action=&quot;login.action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt;action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt; </code></pre>
+<pre><code>&lt;form action=&quot;login.action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt;</code></pre>
 <h2 id="4-to-prevent-duplicate-submission-form-functional-client">4, to prevent duplicate submission form functional client</h2>
 <p>EasyCheck client is enabled by default to prevent duplicate submission function. Prevent the user authentication process by submitting data, because the network is not responding, you repeatedly click submit other reasons, led to resubmit data capabilities. The default user clicks the submit button to submit the form in the process of disabling submit submit button.<br>If, in exceptional scenarios need to disable this feature in the introduction EasyCheck.js, set <code>EasyCheck.easyCheckSubmitDisable</code> parameter value <code>false</code> to disable the anti-duplicate submission function:</p>
 <p>EasyCheck.easyCheckSubmitDisable = false; / / cancel the submit button to disable the function, the default is true</p>
@@ -466,9 +467,9 @@ EasyCheck.ecss=&quot;no&quot;;</code></pre>
   max:&quot;The maximum value of {0}&quot;,
   regexp:&quot;Invalid value&quot;,
   extension:&quot;Invalid extension,only {0}&quot;,
-  vc:&quot;Didn&#39;t match the word verification&quot;
+  vc:&quot;Didn&#39;t match the word verification&quot;,
 
-  lengthrange:&quot;Please use between {0} and {1} characters&quot;
+  lengthrange:&quot;Please use between {0} and {1} characters&quot;,
   numberrange:&quot;Value is between{0}and{1}&quot;</code></pre>
 <h2 id="8-custom-default-correct-error-message">8 , custom default , correct error message</h2>
 <h3 id="8-1-easycheck-support-each-validation-element-specifies-three-types-of-message-manually-the-default-prompts-error-messages-correct-tip-">8.1,EasyCheck support each validation element specifies three types of message manually : The default prompts , error messages , correct Tip.</h3>
@@ -670,8 +671,16 @@ EasyCheck.addChk(&quot;.exists&quot;,
         return EasyCheck.formatMsg(EasyCheck.msg[&quot;exists&quot;],$(o).val());
     }
 );</code></pre>
-<p><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp" title="Demo online">Demo online</a></p>
-<p>Contact, feedback, custom Email: <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#105;&#110;&#x2e;&#x74;&#104;&#105;&#110;&#x6b;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#105;&#110;&#x2e;&#x74;&#104;&#105;&#110;&#x6b;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+<p><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp#demo" title="Demo online">Demo online</a></p>
+<p>Contact, feedback, custom Email: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#105;&#110;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#105;&#110;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p><p></p>
+<p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"></p>
+<p><input type="hidden" name="cmd" value="_xclick"></p>
+<p><input type="hidden" name="business" value="inthinkcolor@gmail.com"></p>
+<p><input type="hidden" name="item_name" value="EasyProject development Donation"></p>
+<p><input type="hidden" name="no_note" value="1"></p>
+<p><input type="hidden" name="tax" value="0"></p>
+<p><input type="image" src="http://www.lightfeel.com/easy/images/paypaldonation5.jpg"  title="PayPal donation"  border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"><br></form><br></P></p>
 
 </body>
 </html>
