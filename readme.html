@@ -298,7 +298,7 @@ img {
 <h3 id="-the-official-site-http-www-lightfeel-com-easy-easycheck-en-index-jsp-easycheck-official-site-home-page-"><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp" title="EasyCheck  official site home page">The official site</a></h3>
 <hr>
 <h2 id="1-the-introduction-easycheck-css-after-introduction-easycheck-js-jquery">1,the introduction EasyCheck.css, after introduction EasyCheck.js jQuery</h2>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/EasyCheck.css&quot;/&gt;  
+<pre><code class="lang-JS">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/EasyCheck.css&quot;/&gt;  
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/EasyCheck.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
@@ -320,7 +320,7 @@ img {
 </li>
 </ul>
 <p>Need more CSS class styles can be modified according to the actual project, set <code>easycheck_defaultInput</code> class style consistent with the style of your text box default class; would <code>easycheck_errorInput</code> class style modified to error style you need. Or, to redefine the class styles in the page, to replace the default style.</p>
-<pre><code>.easycheck_errorInfo {
+<pre><code class="lang-CSS">.easycheck_errorInfo {
     padding: 2px 8px;
     margin-left: 10px;
     background-color:#FFE6BF;
@@ -348,15 +348,15 @@ img {
 <h2 id="2-easycheck-built-in-validator-to-validate">2, EasyCheck built-in validator to validate</h2>
 <p>EasyCkeck built a 16 Validator common everyday development , divided into three types : Class, Attribute, Combination.</p>
 <h4 id="5-class-validator-class-">5 Class validator class：</h4>
-<pre><code>required      Required        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;required&quot;/&gt;     
+<pre><code class="lang-HTML">required      Required        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;required&quot;/&gt;     
 email         Email        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;email&quot;/&gt;
 url           URL        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;url&quot;/&gt;
 number        A number       &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;number&quot;/&gt;
 integer       integer        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;integer&quot;/&gt;</code></pre>
 <p>Simultaneous use of multiple classes validators , separated by spaces :</p>
-<pre><code>Can not be empty , and the mailbox   &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot; required email&quot; /&gt;</code></pre>
+<pre><code class="lang-HTML">Can not be empty , and the mailbox   &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot; required email&quot; /&gt;</code></pre>
 <h4 id="9-attribute-attribute-validator-">9 Attribute attribute validator :</h4>
-<pre><code>equalTo     value must be equal to the specified element ElementId       &lt;input type=&quot;password&quot; name=&quot;name&quot; equalTo=&quot;ElementId&quot;/&gt;
+<pre><code class="lang-HTML">equalTo     value must be equal to the specified element ElementId       &lt;input type=&quot;password&quot; name=&quot;name&quot; equalTo=&quot;ElementId&quot;/&gt;
 equallength value must be equal to the length of equallength                &lt;input type=&quot;password&quot; name=&quot;name&quot;  equallength =&quot;4&quot;/&gt;
 maxlength   The maximum character length can not exceed maxlength maxlength             &lt;input type=&quot;text&quot; name=&quot;name&quot; maxlength=&quot;20&quot;/&gt;
 minlength  minimum character length can not be eliminated on minlength             &lt;input type=&quot;text&quot; name=&quot;name&quot; minlength=&quot;6&quot;/&gt;
@@ -380,60 +380,57 @@ Server-side custom processing Demo (JSP):
 <p>EasyCheck.easyCheckIgnore [“vc”] = true;<br>Vc verification code rule , when the keyboard pops up and lose focus not verified , validated only when the form is submitted &gt; easyCheckIgnor parameters can be set to ignore the validator bounce and focus authentication , and can be modified according to the needs of the keyboard pops up is false, the representative and lose focus when open authentication.</p>
 </blockquote>
 <h4 id="2-combination-combination-validator-">2 Combination combination validator:</h4>
-<pre><code>[minlength] [maxlength] length combination Validator : Using minlength property validator and validator maxlength attribute
+<pre><code class="lang-HTML">[minlength] [maxlength] length combination Validator : Using minlength property validator and validator maxlength attribute
 &lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;urepwd&quot; size=&quot;20&quot; class=&quot;txt required&quot; equalto=&quot;upwd&quot; maxlength=&quot;12&quot; minlength=&quot;6&quot;/&gt;
 [min] [max] a combination of numerical range validator : validator attributes while adding min and max attributes validator
 &lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;urepwd&quot; size=&quot;20&quot; class=&quot;txt required&quot; min=&quot;18&quot; max=&quot;45&quot;/&gt;</code></pre>
 <p><strong>Note : According to the principle EasyCheck internal validation , EasyCheck not mandatory user for each form element must specify the id attribute , you can simplify routine element definitions . But if the page exists <code>name</code> same form elements , you need to distinguish between the use of id . Elements are present in the form <code>id attribute</code>, <code>id</code> attribute takes precedence over the <code>name</code> attribute , EasyCheck internal <code>will</code> id attribute value as a reference to identify various functions to achieve - for example, the need to achieve the element associated with the specified expansion , when the configuration operations , priority <code>id</code>.</strong></p>
 <h2 id="3-when-the-form-is-submitted-to-verify">3, when the form is submitted to verify</h2>
 <p>Validated when the form is submitted, the form of <code>form</code> id <code>add the specified attribute</code> and <code>onsubmit =&quot; return EasyCheck.checkForm (this) &quot;</code> event to</p>
-<pre><code>&lt;form action=&quot;login.action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt;</code></pre>
+<pre><code class="lang-HTML">&lt;form action=&quot;login.action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt;</code></pre>
 <h2 id="4-to-prevent-duplicate-submission-form-functional-client">4, to prevent duplicate submission form functional client</h2>
 <p>EasyCheck client is enabled by default to prevent duplicate submission function. Prevent the user authentication process by submitting data, because the network is not responding, you repeatedly click submit other reasons, led to resubmit data capabilities. The default user clicks the submit button to submit the form in the process of disabling submit submit button.<br>If, in exceptional scenarios need to disable this feature in the introduction EasyCheck.js, set <code>EasyCheck.easyCheckSubmitDisable</code> parameter value <code>false</code> to disable the anti-duplicate submission function:</p>
-<p>EasyCheck.easyCheckSubmitDisable = false; / / cancel the submit button to disable the function, the default is true</p>
-<p>&gt;</p>
+<pre><code class="lang-JS">EasyCheck.easyCheckSubmitDisable = false; / / cancel the submit button to disable the function, the default is true</code></pre>
 <blockquote>
 <p>Firefox under special instructions:<br>Since the Firefox browser to load data from the cache memory when the reason, if the data is submitted by clicking on the browser back button to return to the page, the submit button will still be displayed as disabled.</p>
-<p>The workaround is to add the submit button autocomplete = “off” attribute can be.</p>
+<p>The workaround is to add the submit button <code>autocomplete = &quot;off&quot;</code> attribute can be.</p>
 <p>Role Description &gt;&gt; autocomplete attribute:<br>The default browser forms to shield memory function. Taobao, Baidu ‘s search box also has the attribute. Autocomplete attribute is nonstandard, first added in IE5, and the other browsers are supported. Html5 also be a list of criteria.</p>
 </blockquote>
 <p>Additionally, if you do not want to modify the html page through the submit button to add autocomplete = “off” attribute to implement this feature , EasyCheck also support the achievement of correction Firefox browser back button functionality is enabled by JS code :</p>
 <p>Method One: Set directly under Firefox after disabling the back button id array , you can specify multiple</p>
-<pre><code> EasyCheck.removeDisableBtn=[&#39;submitId&#39;]; </code></pre>
+<pre><code class="lang-JS"> EasyCheck.removeDisableBtn=[&#39;submitId&#39;];</code></pre>
 <p>Method Two : Set array formId back after disabling the next Firefox , you can specify more than one form of the form ID, all the submit button in a form automatically back to normal after</p>
-<pre><code> EasyCheck.removeDisableForm=[&#39;formId&#39;]; </code></pre>
+<pre><code class="lang-JS"> EasyCheck.removeDisableForm=[&#39;formId&#39;];</code></pre>
 <p>Method three : Set to force all pages form a form submit button is enabled, the default value is false</p>
-<pre><code>//This parameter will disable all all from under the submit button is enabled
+<pre><code class="lang-JS">//This parameter will disable all all from under the submit button is enabled
 //If it is determined that all project page does not need to disable the submit button by default , this setting is most convenient
-EasyCheck.removeDisable=true;  </code></pre>
+EasyCheck.removeDisable=true;</code></pre>
 <h2 id="5-text-box-style-management">5 , Text box style management</h2>
 <p>EasyCheck has extensive appearance customization features that can automatically change the validation does not pass when the appearance of the form elements , making more eye-catching form item , the customer experience richer.</p>
 <p>EasyCheck support for the text boxes refer to different styles of three states: default text box style , style text box gets the focus , the error text box style - these three states are quoted <code>EasyCheck.css</code> in <code>easycheck_defaultInput</code>, <code>. . easycheck_focusInput</code>,<code>. easycheck_errorInput</code>.</p>
 <p>These styles are stored in the following parameter values ​​, and set up EasyCheck.css predefined styles :</p>
-<pre><code>EasyCheck.defaultCss=&quot;easycheck_defaultInput&quot;；
+<pre><code class="lang-JS">EasyCheck.defaultCss=&quot;easycheck_defaultInput&quot;；
 EasyCheck.focusCss=&quot;easycheck_focusInput&quot;；
 EasyCheck.errorCss=&quot;easycheck_errorInput&quot;；</code></pre>
 <p><em>Due to default EasyCheck use <code>EasyCheck.css</code> in <code>. Easycheck_defaultInput</code> styles to redefine the text box style , so you need to <code>. Easycheck_defaultInput</code> style form with your default style set to the same.</em></p>
 <p>If you want to redefine the default style used for the text box has focus style , wrong style, you can use JavaScript to be modified.</p>
 <ul>
-<li><p>Modify the text box default class style :</p>
-<pre><code>  // Specify the global default css class style used in the form
+<li>Modify the text box default class style :</li>
+<li><pre><code class="lang-JS">  // Specify the global default css class style used in the form
   EasyCheck.defaultCss = &quot;txt&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form elements using txt2 style.</code></pre>
+  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form   elements using txt2 style.</code></pre>
 </li>
-</ul>
-<ul>
 <li><p>Modify the text box has focus when the class styles :</p>
-<pre><code>  // Specify the global default css class style used in the form
+<pre><code class="lang-JS">  // Specify the global default css class style used in the form
   EasyCheck.defaultCss = &quot;txt&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
   EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form elements using txt2 style.</code></pre>
 </li>
 <li><p>When you modify the error text box type styles :</p>
-<pre><code>  // Specify the global default css class style used in the form
+<pre><code class="lang-JS">  // Specify the global default css class style used in the form
   EasyCheck.defaultCss = &quot;txt&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
@@ -441,19 +438,21 @@ EasyCheck.errorCss=&quot;easycheck_errorInput&quot;；</code></pre>
 </li>
 </ul>
 <h2 id="6-disable-text-box-style-validation-fails">6 , disable text box style validation fails</h2>
-<pre><code>&lt;input type=&quot;text&quot; name=&quot;content&quot; class=&quot;required&quot; ecss=&quot;no&quot;&gt;&lt;/textarea&gt;</code></pre>
+<pre><code class="lang-HTML">    &lt;input type=&quot;text&quot; name=&quot;content&quot; class=&quot;required&quot; ecss=&quot;no&quot;&gt;&lt;/textarea&gt;</code></pre>
 <p> By default, when the validation fails , in addition to displaying the error message , the text box will use <code>. Easycheck_errorInput</code> class style ( not verified via text box style ) shows that if you need to disable the display, can be added to the text box object <code>ecss = &quot;no&quot;</code> attribute to achieve disable error style.</p>
 <p>When too many elements on the page , the page can be set to disable all authentication to verify the object does not pass through the global parameters EasyCheck.ecss style :</p>
-<pre><code>//Specify the page to completely disable error text box style
-EasyCheck.ecss=&quot;no&quot;;</code></pre>
+<pre><code class="lang-JS">//Specify the page to completely disable error text box style
+    EasyCheck.ecss=&quot;no&quot;;</code></pre>
 <p>//Disable error id specified text box style form elements as regForm2</p>
-<pre><code>EasyCheck.formEcss[&#39;regForm2&#39;]=&quot;no&quot;;</code></pre>
+<pre><code class="lang-JS">EasyCheck.formEcss[&#39;regForm2&#39;]=&quot;no&quot;;</code></pre>
 <h2 id="7-custom-global-error-message-content">7 , custom global error message content</h2>
 <p>Specify validation rules can be modified according to the needs prompt message content , grammar :</p>
-<p>EasyCheck.msg [‘ validation rules corresponding message name’ ] = “ message prompts Content” ;<br>EasyCheck message support placeholders , such as:</p>
-<p>EasyCheck.msg [‘required’] = “is required”;<br>EasyCheck.msg [‘lengthRange’] = “ { 0} is the minimum length , maximum length of { 1} ! “ ;</p>
+<pre><code class="lang-JS">EasyCheck.msg [&#39; validation rules corresponding message name&#39; ] = &quot; message prompts Content&quot; ;</code></pre>
+<p>EasyCheck message support placeholders , such as:</p>
+<pre><code class="lang-JS">EasyCheck.msg [&#39;required&#39;] = &quot;is required&quot;;
+EasyCheck.msg [&#39;lengthRange&#39;] = &quot; { 0} is the minimum length , maximum length of { 1} ! &quot; ;</code></pre>
 <p>Name and default value <code>EasyCheck.msg</code> default message list as follows :</p>
-<pre><code>  required:&quot;Is required&quot;,
+<pre><code class="lang-JS">  required:&quot;Is required&quot;,
   email:&quot;Invalid email&quot;,
   url:&quot;Invalid url&quot;,
   number:&quot;Invalid number&quot;,
@@ -479,13 +478,13 @@ EasyCheck.ecss=&quot;no&quot;;</code></pre>
 <li>Correct Tip DIV id: <code>ok_ElementId</code> | | <code>ok_ElementName</code> ( using <code>easycheck_okInfo</code> style. )</li>
 <li>Error DIV id: <code>error_ElementId</code> | | <code>error_ElementName</code> ( using <code>easycheck_errorInfo</code> style. )</li>
 </ul>
-<pre><code>    &lt;div id=&quot;default_uname&quot;  style=&quot;display: inline;&quot;&gt; required , start with a letter and can only contain letters and numbers &lt;/div&gt; 
-    &lt;div id=&quot;ok_uname&quot; style=&quot;display: inline;&quot;&gt;correct &lt;/div&gt;
-    &lt;div id=&quot;error_uname&quot;   prefix=&quot;user name&quot; style=&quot;display: inline;&quot;&gt;&lt;/div&gt;
+<pre><code class="lang-HTML">&lt;div id=&quot;default_uname&quot;  style=&quot;display: inline;&quot;&gt; required , start with a letter and can only contain letters and numbers &lt;/div&gt; 
+&lt;div id=&quot;ok_uname&quot; style=&quot;display: inline;&quot;&gt;correct &lt;/div&gt;
+&lt;div id=&quot;error_uname&quot;   prefix=&quot;user name&quot; style=&quot;display: inline;&quot;&gt;&lt;/div&gt;
 
-    &lt;div id=&quot;error_uemail&quot;  info=&quot;email please!&quot;  style=&quot;display: inline;&quot;&gt;&lt;/div&gt;</code></pre>
+&lt;div id=&quot;error_uemail&quot;  info=&quot;email please!&quot;  style=&quot;display: inline;&quot;&gt;&lt;/div&gt;</code></pre>
 <p>Use DIV error message can be displayed in the specified location ( by default , the error message without specifying the DIV and manually create , EasyCheck automatically created and displayed in the text box ) . DIV error message has the following two optional attributes :<br><code>info</code>: optional attribute error message ( overrides the default prompt content )<br><code>perfix</code>: an optional attribute , an error message prefix<br>Such as:</p>
-<pre><code>&lt;tr&gt;  
+<pre><code class="lang-HTML">&lt;tr&gt;  
       &lt;td align=&quot;left&quot;  width=&quot;300px&quot;&gt;
            &lt;label class=&quot;lbl&quot;&gt;&lt;div style=&quot;color:#FF0000; display:inline&quot;&gt;*&lt;/div&gt;登录邮箱&lt;/label&gt;
           &lt;div  id=&quot;error_uemail&quot;  info=&quot;input your email please！&quot;&gt;&lt;/div&gt; 
@@ -498,28 +497,28 @@ EasyCheck.ecss=&quot;no&quot;;</code></pre>
 &lt;/tr&gt;</code></pre>
 <h3 id="8-2-easychek-support-error-message-content-is-fully-customizable-support-for-each-element-of-each-form-validator-uses-different-message-formats-">8.2、EasyChek support error message content is fully customizable, support for each element of each form validator uses different message formats:</h3>
 <p><strong> If the form element id attribute exists , then the priority ElementId</strong></p>
-<pre><code>EasyCheck.msgs[&#39;ElementId&#39;||&#39;ElementName&#39;]={  
+<pre><code class="lang-JS">EasyCheck.msgs[&#39;ElementId&#39;||&#39;ElementName&#39;]={  
      Validator Name 1 &#39;: &quot;prompt content&quot;,
      Validator Name 2 &#39;: &quot;prompt content&quot;
     ……
 };</code></pre>
 <p><strong>When you define a class name preceded validator point , using the name attribute validator brackets [ ] . </strong></p>
 <p>For example, the elements required for the uname class Validator ( <strong> preceded points . </strong> ) And reg attribute validator ( <strong> use brackets [ ] </strong> ) to specify a custom message.</p>
-<pre><code>EasyCheck.msgs[&#39;uname&#39;]={
+<pre><code class="lang-JS">EasyCheck.msgs[&#39;uname&#39;]={
     &#39;.required&#39;: &#39;There must be ah !&#39;,
     &#39;[reg]&#39;:&#39;can only contain letters and numbers &#39;
 };</code></pre>
 <p>EasyCheck messages support the use of placeholders , if the message contains placeholders ( <code>{ 0 }</code>, <code>{1 }</code> , …… ) , you need to function <strong> </strong> handling and return messages via message and use `EasyCheck . formatMsg (“ message content “, “ placeholder parameter 1 “ , …… ) message format ‘ .</p>
 <p>For example, to specify a custom message length range validator upwd combination of elements and format placeholders message:</p>
-<pre><code>EasyCheck.msgs[&#39;upwd&#39;]={
+<pre><code class="lang-JS">EasyCheck.msgs[&#39;upwd&#39;]={
     &#39;[minlength][maxlength]&#39;:
-    / / Message functions , o the current DOM object
+    // Message functions , o the current DOM object
     function(o){ 
         return EasyCheck.formatMsg(&quot;Password digits : {0}-{1}&quot; , o.attr(&#39;minlength&#39;) , o.attr(&#39;maxlength&#39;));
     }
 };</code></pre>
 <p>Or</p>
-<pre><code>/ / Message functions , o the current DOM object
+<pre><code class="lang-JS">// Message functions , o the current DOM object
 var upwdMsg = function(o){
     return EasyCheck.formatMsg(&quot;Password digits : {0}-{1}！&quot;, o.attr(&#39;minlength&#39;) , o.attr(&#39;maxlength&#39;));
 };
@@ -531,48 +530,46 @@ EasyCheck.msgs[&#39;upwd&#39;]={
 <h2 id="9-manually-clear-the-error-message-and-setting">9 , manually clear the error message and setting</h2>
 <h3 id="9-1-clear-all-the-error-messages-">9.1 , clear all the error messages .</h3>
 <p>Clear error.<br><code>formId</code>: Optional. When specified, only the specified form in clear error message ; do not specify , clear the current page for all error messages.</p>
-<pre><code>EasyCheck.clearAllError( [formId] );</code></pre>
+<pre><code class="lang-JS">    EasyCheck.clearAllError( [formId] );</code></pre>
 <h3 id="9-2-restore-messages-">9.2 , restore messages.</h3>
 <p>Clear error and clear the correct prompt displays the default prompt.<br>For example, the verification form in the pop-up layer , the layer re-open the closed , all empty layers forms authentication prompt information before .<br><code>formId</code>: Optional. When specified, only the specified form in clear error message ; do not specify , clear the current page for all error messages.</p>
-<pre><code>EasyCheck.restoreAll( [formId] );</code></pre>
+<pre><code class="lang-JS">    EasyCheck.restoreAll( [formId] );</code></pre>
 <h3 id="9-3-set-the-error-messages-to-the-specified-form-elements-manually-you-can-use-a-unified-style-tips-custom-message-">9.3 , set the error messages to the specified form elements manually (You can use a unified style tips custom message).</h3>
 <p>You can use this method to display the specified message returned from the server .<br><code>elementId | | elementDOM</code>: id specified form elements or form elements DOM object.<br>msg: the error message.</p>
-<pre><code>EasyCheck.showError( &#39;elementId&#39;|elementDOM , &#39;msg&#39; );</code></pre>
+<pre><code class="lang-JS">    EasyCheck.showError( &#39;elementId&#39;|elementDOM , &#39;msg&#39; );</code></pre>
 <h3 id="9-4-clear-form-elements-specified-error-message-">9.4 , clear form elements specified error message.</h3>
 <p><code>elementId | | elementDOM</code>: id specified form elements or form elements DOM object.</p>
-<pre><code>EasyCheck.clearError( &#39;elementId&#39;|elementDOM  );</code></pre>
+<pre><code class="lang-JS">    EasyCheck.clearError( &#39;elementId&#39;|elementDOM  );</code></pre>
 <h3 id="10-senior-extension-new-custom-validator-plugin-extensions-easycheck-validation-framework">10 , senior extension : New custom validator plugin extensions EasyCheck validation framework</h3>
 <p>EasyCheck has flexible scalability, use <code>EasyCheck.addChk</code> function only easy step to add new custom validator ! </p>
 <h3 id="10-1-a-new-custom-validator-class-attribute-">10.1 , a new custom validator (Class, Attribute)</h3>
 <p>Call <code>EasyCheck.addChk (chkName, chkFun, chkMsg)</code> function can be realized to the new verification system to register a custom plugin function .</p>
-<p>/ *</p>
-<ul>
-<li><code>CheckName</code> registered validator attribute or class name ( only letters and numbers )</li>
-<li><code>ChkFun</code> verification callback</li>
-<li><code>ChkMsg</code> validation failure alert message or message function</li>
-<li>/<br><strong>Authentication name naming convention: </strong>   </li>
-</ul>
+<pre><code class="lang-JS">/*
+* `CheckName` registered validator attribute or class name ( only letters and numbers )
+* `ChkFun` verification callback
+* `ChkMsg` validation failure alert message or message function
+* /</code></pre>
+<p><strong>Authentication name naming convention: </strong>   </p>
 <ul>
 <li><strong>Registration class validator : validator name must begin with a dot , such as <code>exists</code></strong>   </li>
-<li><p><strong>Registration attribute validator : validator name must use brackets [ ] to enclose , such as <code>[theme]</code> </strong></p>
-<p>Sign EasyCheck validator class and attribute syntax:</p>
-<p>  EasyCheck.addChk(“validator name”,</p>
-<pre><code>  //o represents the current DOM object
-  function(o){
-      //Verify achieve
-      // var val=$(o).val();
-      // return $.trim(val)!=&quot;&quot;;
-     //Returns true or verified by false.true behalf ; false representatives did not pass , chkMsg message will be displayed
-  }
-  ,
-  &quot;Authentication failed when the message string&quot;);</code></pre>
-</li>
+<li><strong>Registration attribute validator : validator name must use brackets [ ] to enclose , such as <code>[theme]</code> </strong></li>
 </ul>
+<p>Sign EasyCheck validator class and attribute syntax:</p>
+<pre><code class="lang-JS">EasyCheck.addChk(&quot;validator name&quot;,
+    //o represents the current DOM object
+    function(o){
+        //Verify achieve
+        // var val=$(o).val();
+        // return $.trim(val)!=&quot;&quot;;
+       //Returns true or verified by false.true behalf ; false representatives did not pass , chkMsg message will be displayed
+    }
+    ,
+    &quot;Authentication failed when the message string&quot;);</code></pre>
 <h3 id="10-2-a-new-combination-of-custom-validator-combination-">10.2 , a new combination of custom validator (Combination):</h3>
-<p>EasyCheck supports the use of multiple combinations of registered validators to create new combinations of validators.<br>Such as: <code>min through a combination of existing properties and</code> max <code>validator validator attribute</code> , digital detection range validator .<br>Validator naming convention is: <code>validator validator 1 2</code><br>Example , the combined new validator registered name : <code>[min] [max]</code><br>The validator will be used <strong> when the min and max validator</strong>  in user . </p>
+<p>EasyCheck supports the use of multiple combinations of registered validators to create new combinations of validators.<br>Such as: <code>min through a combination of existing properties and</code> max <code>validator validator attribute</code> , digital detection range validator .<br>Validator naming convention is: <code>validator1 validator2</code><br>Example , the combined new validator registered name : <code>[min] [max]</code><br>The validator will be used <strong> when the min and max validator</strong>  in user . </p>
 <h3 id="10-3-using-the-message-function-to-obtain-the-message-string">10.3 , using the message function to obtain the message string</h3>
 <p>10.3 , using the message function to obtain the message string<br>Some contents of the message with the current value of a property or related form elements , EasyCheck <strong>message function</strong> supports return a message string.</p>
-<pre><code>EasyCheck.addChk(&quot;validator name&quot;,
+<pre><code class="lang-JS">EasyCheck.addChk(&quot;validator name&quot;,
     //o代表当前DOM对象
     function(o){
     //o represents the current DOM object
@@ -596,36 +593,31 @@ EasyCheck.msgs[&#39;upwd&#39;]={
 <p>If the registered validator only need to verify ( eg verification code , without losing focus or keyboard bounce verification ) at the time of submitting the form , you can registered the following code:</p>
 <ul>
 <li><p><code>EasyCheck.easyCheckIgnore</code>: Specifies the validator to ignore validation, verification after setting while ignoring loses keyboard focus events and pop events.</p>
-<pre><code>  EasyCheck.easyCheckIgnore[&quot; validator name &quot;]=true;</code></pre>
+<pre><code class="lang-JS">EasyCheck.easyCheckIgnore[&quot; validator name &quot;]=true;</code></pre>
 </li>
 <li><p><code>EasyCheck.easyCheckBlurIgnore</code>: Specifies the validator to ignore lost focus event validation</p>
-<pre><code>  EasyCheck.easyCheckBlurIgnore[&quot; validator name &quot;]=true;</code></pre>
+<pre><code class="lang-JS">EasyCheck.easyCheckBlurIgnore[&quot; validator name &quot;]=true;</code></pre>
 </li>
-</ul>
-<ul>
 <li><p><code>EasyCheck.easyCheckKeyupIgnore</code>: Specifies the validator to ignore the keyboard pops up event validation</p>
-<pre><code>  EasyCheck.easyCheckKeyupIgnore[&quot; validator name &quot;]=true;</code></pre>
+<pre><code class="lang-JS">EasyCheck.easyCheckKeyupIgnore[&quot; validator name &quot;]=true;</code></pre>
 </li>
 </ul>
 <h4 id="form-element-triggering-event-management">Form element triggering event management</h4>
 <p>  Specify the form elements elementId or elementName: (<strong> elementId priority </strong> )</p>
 <ul>
-<li><p><code>EasyCheck.easyCheckEleIgnore</code>: Specifies the form elements, disc bounce and lost focus event to ignore verification</p>
-<pre><code>  EasyCheck.easyCheckEleIgnore[&quot;element id or name&quot;]=true;</code></pre>
+<li><code>EasyCheck.easyCheckEleIgnore</code>: Specifies the form elements, disc bounce and lost focus event to ignore verification<pre><code class="lang-JS">EasyCheck.easyCheckEleIgnore[&quot;element id or name&quot;]=true;</code></pre>
 </li>
-<li><p><code>EasyCheck.easyCheckEleBlurIgnore</code>: Specifies the form element loses focus event to ignore verification</p>
-<pre><code>  EasyCheck.easyCheckEleBlurIgnore[&quot;element id or name&quot;]=true;</code></pre>
+<li><code>EasyCheck.easyCheckEleBlurIgnore</code>: Specifies the form element loses focus event to ignore verification<pre><code class="lang-JS">EasyCheck.easyCheckEleBlurIgnore[&quot;element id or name&quot;]=true;</code></pre>
 </li>
-<li><p><code>EasyCheck.easyCheckEleKeyupIgnore</code>: Specifies the form elements, ignoring the keyboard up event validation</p>
-<pre><code>  EasyCheck.easyCheckEleKeyupIgnore[&quot;element id or name&quot;]=true;</code></pre>
+<li><code>EasyCheck.easyCheckEleKeyupIgnore</code>: Specifies the form elements, ignoring the keyboard up event validation<pre><code class="lang-JS">EasyCheck.easyCheckEleKeyupIgnore[&quot;element id or name&quot;]=true;</code></pre>
 </li>
 </ul>
 <h2 id="11-advanced-options-custom-new-validator-instance">11 , Advanced Options : Custom new validator instance</h2>
 <p>Assuming page requires a user name to detect whether there is a validator class , you can directly define .</p>
-<pre><code>//Register the new class Validator ( validator name verification function , the error message ) , to detect the user name exists
+<pre><code class="lang-JS">//Register the new class Validator ( validator name verification function , the error message ) , to detect the user name exists
 EasyCheck.addChk(&quot;.exists&quot;,
     function(o){
-          var val=$(o).val();
+             var val=$(o).val();
          var res=false; //result , Ajax return test results
          dwr.engine.setAsync(false); //disable asynchronous AJAX DWR
          UserInfoDWR.checkEmail(val,function(d){
@@ -640,7 +632,7 @@ EasyCheck.addChk(&quot;.exists&quot;,
 <p>In order to facilitate the prompt message for unified management , unified messaging can be prompted to define EasyCheck.msg list.</p>
 <p><strong>EasyCheck.msg [“ custom message name “ ] = “ message content , you can use { 0 } , { 1} …… placeholder” ;</strong></p>
 <p>Since the new validation function in the definition of news tips section, use <code>EasyCheck.msg [&quot; custom message name &quot; ]</code> to get the message content , such as:</p>
-<pre><code>// Define validator prompt message
+<pre><code class="lang-JS">// Define validator prompt message
 EasyCheck.msg[&quot;exists&quot;]=&quot; This name is already in use ! &quot;;
 
 EasyCheck.addChk(&quot;.exists&quot;,
@@ -655,7 +647,7 @@ EasyCheck.addChk(&quot;.exists&quot;,
 );</code></pre>
 <h3 id="12-2-if-the-content-of-the-message-contains-placeholders-0-1-use-the-message-processing-function">12.2 , if the content of the message contains placeholders ( { 0 } , { 1} , …… ) , use the message processing function</h3>
 <p>Messages via `EasyCheck.formatMsg (“ message content “,” placeholder parameter 1 “ , …… ) ‘ format , such as:</p>
-<pre><code>//Define validator prompt message
+<pre><code class="lang-JS">//Define validator prompt message
 EasyCheck.msg[&quot;exists&quot;]=&quot;“{0}”This name is already in use !&quot;;
 
 EasyCheck.addChk(&quot;.exists&quot;,
@@ -672,7 +664,7 @@ EasyCheck.addChk(&quot;.exists&quot;,
     }
 );</code></pre>
 <p><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp#demo" title="Demo online">Demo online</a></p>
-<p>Contact, feedback, custom Email: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#105;&#110;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#105;&#110;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Contact, feedback, custom Email: <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x69;&#x6e;&#46;&#x74;&#x68;&#105;&#110;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x69;&#x6e;&#46;&#x74;&#x68;&#105;&#110;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p><p></p>
 <p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"></p>
 <p><input type="hidden" name="cmd" value="_xclick"></p>
