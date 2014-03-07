@@ -88,7 +88,11 @@ Need more CSS class styles can be modified according to the actual project, set 
 EasyCkeck built a 16 Validator common everyday development , divided into three types : Class, Attribute, Combination.
 
 #### 5 Class validator class：
+Validator class names are inside the EasyCheck begin with:`.`,like:  `.validatorName`.
+
 ```HTML
+<Validator internal name>      <use>
+
 required      Required        <input type="text" name="name" class="required"/>     
 email         Email        <input type="text" name="name" class="email"/>
 url           URL        <input type="text" name="name" class="url"/>
@@ -104,7 +108,11 @@ Can not be empty , and the mailbox   <input type="text" name="name" class=" requ
 
 
 #### 9 Attribute attribute validator :
+Attribute names EasyCheck internal verifier is to `[]` surround,like: `[validatorName]`.
+
 ```HTML
+<Validator internal name>                                                <use>
+
 equalTo     value must be equal to the specified element ElementId       <input type="password" name="name" equalTo="ElementId"/>
 equallength value must be equal to the length of equallength                <input type="password" name="name"  equallength ="4"/>
 maxlength   The maximum character length can not exceed maxlength maxlength             <input type="text" name="name" maxlength="20"/>
@@ -130,12 +138,14 @@ Server-side custom processing Demo (JSP):
 > Help , by default to avoid unnecessary server requests authentication code verification conducted only when the form is submitted , the keyboard does not bounce and validation parameters loses focus . Implementation code :
 > 
 > EasyCheck.easyCheckIgnore ["vc"] = true;
-> Vc verification code rule , when the keyboard pops up and lose focus not verified , validated only when the form is submitted > easyCheckIgnor parameters can be set to ignore the validator bounce and focus authentication , and can be modified according to the needs of the keyboard pops up is false, the representative and lose focus when open authentication.
+> Vc verification code rule , when the keyboard pops up and lose focus not verified , validated only when the form is submitted `EasyCheck.easyCheckIgnore`parameters can be set to ignore the validator bounce and focus authentication , and can be modified according to the needs of the keyboard pops up is false, the representative and lose focus when open authentication.
 > 
 
 
 #### 2 Combination combination validator:
 ```HTML
+<Validator internal name>                                  <use>
+
 [minlength] [maxlength] length combination Validator : Using minlength property validator and validator maxlength attribute
 <input type="password" value="" name="urepwd" size="20" class="txt required" equalto="upwd" maxlength="12" minlength="6"/>
 [min] [max] a combination of numerical range validator : validator attributes while adding min and max attributes validator
@@ -152,19 +162,22 @@ Validated when the form is submitted, the form of `form` id `add the specified a
 ```
 
 ## 4, to prevent duplicate submission form functional client
+
+### 4.1、Open and prevent duplicate submission form disabling client function
 EasyCheck client is enabled by default to prevent duplicate submission function. Prevent the user authentication process by submitting data, because the network is not responding, you repeatedly click submit other reasons, led to resubmit data capabilities. The default user clicks the submit button to submit the form in the process of disabling submit submit button.
 If, in exceptional scenarios need to disable this feature in the introduction EasyCheck.js, set `EasyCheck.easyCheckSubmitDisable` parameter value `false` to disable the anti-duplicate submission function:
 
 ```JS
-EasyCheck.easyCheckSubmitDisable = false; / / cancel the submit button to disable the function, the default is true
+// cancel the submit button to disable the function, the default is true
+EasyCheck.easyCheckSubmitDisable = false; 
 ```
+### 4.2、Firefox, the browser back button to restore the configuration disabled
+**Firefox under special instructions:**
+ Since the Firefox browser to load data from the cache memory when the reason, if the data is submitted by clicking on the browser back button to return to the page, the submit button will still be displayed as disabled.
 
-> Firefox under special instructions:
-> Since the Firefox browser to load data from the cache memory when the reason, if the data is submitted by clicking on the browser back button to return to the page, the submit button will still be displayed as disabled.
->
-> The workaround is to add the submit button `autocomplete = "off"` attribute can be.
->
-Role Description >> autocomplete attribute:
+ The workaround is to add the submit button `autocomplete = "off"` attribute can be.
+
+> Description autocomplete attribute:
 > The default browser forms to shield memory function. Taobao, Baidu 's search box also has the attribute. Autocomplete attribute is nonstandard, first added in IE5, and the other browsers are supported. Html5 also be a list of criteria.
 >
  
@@ -213,25 +226,25 @@ If you want to redefine the default style used for the text box has focus style 
 	EasyCheck.defaultCss = "txt";
 	
 	// If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-	EasyCheck.formDefaultCss ['formId'] ​​= "txt2"; / / specify an id regForm2 form   elements using txt2 style.
+	EasyCheck.formDefaultCss ['formId'] ​​= "txt2"; // Specifies the id of the form element is formId using .txt2 style
   ```
 
 - Modify the text box has focus when the class styles :
   ```JS
-	// Specify the global default css class style used in the form
-	EasyCheck.defaultCss = "txt";
+	// Specify the global has focus css class style used in the form
+	EasyCheck.focusCss = "focus";
 	
 	// If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-	EasyCheck.formDefaultCss ['formId'] ​​= "txt2"; / / specify an id regForm2 form elements using txt2 style.
+	EasyCheck.formDefaultCss ['formId'] ​​= "focus2"; // Specifies the id of the form element is formId using .focus2 style
   ```
 
 - When you modify the error text box type styles :
   ```JS
-	// Specify the global default css class style used in the form
-	EasyCheck.defaultCss = "txt";
+	// Specify the global the error text box css class style used in the form
+	EasyCheck.errorCss = "error";
 	
 	// If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-	EasyCheck.formDefaultCss ['formId'] ​​= "txt2"; / / specify an id regForm2 form elements using txt2 style.
+	EasyCheck.formDefaultCss ['formId'] ​​= "error2"; // Specifies the id of the form element is formId using .error2 style
   ```
 
 
@@ -269,6 +282,8 @@ EasyCheck.msg ['lengthRange'] = " { 0} is the minimum length , maximum length of
 
 Name and default value `EasyCheck.msg` default message list as follows :
 ```JS
+//msg list
+msg:{
   required:"Is required",
   email:"Invalid email",
   url:"Invalid url",
@@ -287,6 +302,7 @@ Name and default value `EasyCheck.msg` default message list as follows :
 
   lengthrange:"Please use between {0} and {1} characters",
   numberrange:"Value is between{0}and{1}"
+}
 ```
 
 ## 8 , custom default , correct error message
@@ -404,16 +420,16 @@ For example, the verification form in the pop-up layer , the layer re-open the c
 
 ### 9.3 , set the error messages to the specified form elements manually (You can use a unified style tips custom message).
 You can use this method to display the specified message returned from the server .
-`elementId | | elementDOM`: id specified form elements or form elements DOM object.
+`elementId || elementName || elementDOM`: id specified form elements or form elements DOM object.
 msg: the error message.
 ```JS
-	EasyCheck.showError( 'elementId'|elementDOM , 'msg' );
+	EasyCheck.showError( 'elementId'||'elementName'||elementDOM , 'msg' );
 ```
 
 ###  9.4 , clear form elements specified error message.
-`elementId | | elementDOM`: id specified form elements or form elements DOM object.
+`elementId || elementName || elementDOM`: id specified form elements or form elements DOM object.
 ```JS
-	EasyCheck.clearError( 'elementId'|elementDOM  );
+	EasyCheck.clearError( 'elementId'||'elementName'||elementDOM  );
 ```
 
 
@@ -455,8 +471,7 @@ EasyCheck.addChk("validator name",
 EasyCheck supports the use of multiple combinations of registered validators to create new combinations of validators.
 Such as: `min through a combination of existing properties and ` max ` validator validator attribute ` , digital detection range validator .
 Validator naming convention is: ` validator1 validator2`
-Example , the combined new validator registered name : `[min] [max]`
-The validator will be used ** when the min and max validator**  in user . 
+Example, the combined new validator registered name `[min][max]`: This validator **only when the user while using min and max attributes validator **work, the use of a combination of the validator `[min]` and `[max]` independent verification control function will be ignored, direct execution `[min][max]` combination validator validation function.
 
 ### 10.3 , using the message function to obtain the message string
 10.3 , using the message function to obtain the message string

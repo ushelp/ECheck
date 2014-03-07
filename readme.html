@@ -348,7 +348,10 @@ img {
 <h2 id="2-easycheck-built-in-validator-to-validate">2, EasyCheck built-in validator to validate</h2>
 <p>EasyCkeck built a 16 Validator common everyday development , divided into three types : Class, Attribute, Combination.</p>
 <h4 id="5-class-validator-class-">5 Class validator class：</h4>
-<pre><code class="lang-HTML">required      Required        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;required&quot;/&gt;     
+<p>Validator class names are inside the EasyCheck begin with:<code>.</code>,like:  <code>.validatorName</code>.</p>
+<pre><code class="lang-HTML">&lt;Validator internal name&gt;      &lt;use&gt;
+
+required      Required        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;required&quot;/&gt;     
 email         Email        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;email&quot;/&gt;
 url           URL        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;url&quot;/&gt;
 number        A number       &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;number&quot;/&gt;
@@ -356,7 +359,10 @@ integer       integer        &lt;input type=&quot;text&quot; name=&quot;name&quo
 <p>Simultaneous use of multiple classes validators , separated by spaces :</p>
 <pre><code class="lang-HTML">Can not be empty , and the mailbox   &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot; required email&quot; /&gt;</code></pre>
 <h4 id="9-attribute-attribute-validator-">9 Attribute attribute validator :</h4>
-<pre><code class="lang-HTML">equalTo     value must be equal to the specified element ElementId       &lt;input type=&quot;password&quot; name=&quot;name&quot; equalTo=&quot;ElementId&quot;/&gt;
+<p>Attribute names EasyCheck internal verifier is to <code>[]</code> surround,like: <code>[validatorName]</code>.</p>
+<pre><code class="lang-HTML">&lt;Validator internal name&gt;                                                &lt;use&gt;
+
+equalTo     value must be equal to the specified element ElementId       &lt;input type=&quot;password&quot; name=&quot;name&quot; equalTo=&quot;ElementId&quot;/&gt;
 equallength value must be equal to the length of equallength                &lt;input type=&quot;password&quot; name=&quot;name&quot;  equallength =&quot;4&quot;/&gt;
 maxlength   The maximum character length can not exceed maxlength maxlength             &lt;input type=&quot;text&quot; name=&quot;name&quot; maxlength=&quot;20&quot;/&gt;
 minlength  minimum character length can not be eliminated on minlength             &lt;input type=&quot;text&quot; name=&quot;name&quot; minlength=&quot;6&quot;/&gt;
@@ -377,10 +383,12 @@ Server-side custom processing Demo (JSP):
 %&gt;</code></pre>
 <blockquote>
 <p>Help , by default to avoid unnecessary server requests authentication code verification conducted only when the form is submitted , the keyboard does not bounce and validation parameters loses focus . Implementation code :</p>
-<p>EasyCheck.easyCheckIgnore [“vc”] = true;<br>Vc verification code rule , when the keyboard pops up and lose focus not verified , validated only when the form is submitted &gt; easyCheckIgnor parameters can be set to ignore the validator bounce and focus authentication , and can be modified according to the needs of the keyboard pops up is false, the representative and lose focus when open authentication.</p>
+<p>EasyCheck.easyCheckIgnore [“vc”] = true;<br>Vc verification code rule , when the keyboard pops up and lose focus not verified , validated only when the form is submitted <code>EasyCheck.easyCheckIgnore</code>parameters can be set to ignore the validator bounce and focus authentication , and can be modified according to the needs of the keyboard pops up is false, the representative and lose focus when open authentication.</p>
 </blockquote>
 <h4 id="2-combination-combination-validator-">2 Combination combination validator:</h4>
-<pre><code class="lang-HTML">[minlength] [maxlength] length combination Validator : Using minlength property validator and validator maxlength attribute
+<pre><code class="lang-HTML">&lt;Validator internal name&gt;                                  &lt;use&gt;
+
+[minlength] [maxlength] length combination Validator : Using minlength property validator and validator maxlength attribute
 &lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;urepwd&quot; size=&quot;20&quot; class=&quot;txt required&quot; equalto=&quot;upwd&quot; maxlength=&quot;12&quot; minlength=&quot;6&quot;/&gt;
 [min] [max] a combination of numerical range validator : validator attributes while adding min and max attributes validator
 &lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;urepwd&quot; size=&quot;20&quot; class=&quot;txt required&quot; min=&quot;18&quot; max=&quot;45&quot;/&gt;</code></pre>
@@ -389,12 +397,15 @@ Server-side custom processing Demo (JSP):
 <p>Validated when the form is submitted, the form of <code>form</code> id <code>add the specified attribute</code> and <code>onsubmit =&quot; return EasyCheck.checkForm (this) &quot;</code> event to</p>
 <pre><code class="lang-HTML">&lt;form action=&quot;login.action&quot; onsubmit=&quot;return EasyCheck.checkForm(this)&quot; id=&quot;regForm&quot; method=&quot;post&quot;&gt;</code></pre>
 <h2 id="4-to-prevent-duplicate-submission-form-functional-client">4, to prevent duplicate submission form functional client</h2>
+<h3 id="4-1-open-and-prevent-duplicate-submission-form-disabling-client-function">4.1、Open and prevent duplicate submission form disabling client function</h3>
 <p>EasyCheck client is enabled by default to prevent duplicate submission function. Prevent the user authentication process by submitting data, because the network is not responding, you repeatedly click submit other reasons, led to resubmit data capabilities. The default user clicks the submit button to submit the form in the process of disabling submit submit button.<br>If, in exceptional scenarios need to disable this feature in the introduction EasyCheck.js, set <code>EasyCheck.easyCheckSubmitDisable</code> parameter value <code>false</code> to disable the anti-duplicate submission function:</p>
-<pre><code class="lang-JS">EasyCheck.easyCheckSubmitDisable = false; / / cancel the submit button to disable the function, the default is true</code></pre>
+<pre><code class="lang-JS">// cancel the submit button to disable the function, the default is true
+EasyCheck.easyCheckSubmitDisable = false;</code></pre>
+<h3 id="4-2-firefox-the-browser-back-button-to-restore-the-configuration-disabled">4.2、Firefox, the browser back button to restore the configuration disabled</h3>
+<p><strong>Firefox under special instructions:</strong><br> Since the Firefox browser to load data from the cache memory when the reason, if the data is submitted by clicking on the browser back button to return to the page, the submit button will still be displayed as disabled.</p>
+<p> The workaround is to add the submit button <code>autocomplete = &quot;off&quot;</code> attribute can be.</p>
 <blockquote>
-<p>Firefox under special instructions:<br>Since the Firefox browser to load data from the cache memory when the reason, if the data is submitted by clicking on the browser back button to return to the page, the submit button will still be displayed as disabled.</p>
-<p>The workaround is to add the submit button <code>autocomplete = &quot;off&quot;</code> attribute can be.</p>
-<p>Role Description &gt;&gt; autocomplete attribute:<br>The default browser forms to shield memory function. Taobao, Baidu ‘s search box also has the attribute. Autocomplete attribute is nonstandard, first added in IE5, and the other browsers are supported. Html5 also be a list of criteria.</p>
+<p>Description autocomplete attribute:<br>The default browser forms to shield memory function. Taobao, Baidu ‘s search box also has the attribute. Autocomplete attribute is nonstandard, first added in IE5, and the other browsers are supported. Html5 also be a list of criteria.</p>
 </blockquote>
 <p>Additionally, if you do not want to modify the html page through the submit button to add autocomplete = “off” attribute to implement this feature , EasyCheck also support the achievement of correction Firefox browser back button functionality is enabled by JS code :</p>
 <p>Method One: Set directly under Firefox after disabling the back button id array , you can specify multiple</p>
@@ -420,21 +431,21 @@ EasyCheck.errorCss=&quot;easycheck_errorInput&quot;；</code></pre>
   EasyCheck.defaultCss = &quot;txt&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form   elements using txt2 style.</code></pre>
+  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; // Specifies the id of the form element is formId using .txt2 style</code></pre>
 </li>
 <li><p>Modify the text box has focus when the class styles :</p>
-<pre><code class="lang-JS">  // Specify the global default css class style used in the form
-  EasyCheck.defaultCss = &quot;txt&quot;;
+<pre><code class="lang-JS">  // Specify the global has focus css class style used in the form
+  EasyCheck.focusCss = &quot;focus&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form elements using txt2 style.</code></pre>
+  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;focus2&quot;; // Specifies the id of the form element is formId using .focus2 style</code></pre>
 </li>
 <li><p>When you modify the error text box type styles :</p>
-<pre><code class="lang-JS">  // Specify the global default css class style used in the form
-  EasyCheck.defaultCss = &quot;txt&quot;;
+<pre><code class="lang-JS">  // Specify the global the error text box css class style used in the form
+  EasyCheck.errorCss = &quot;error&quot;;
 
   // If the page has multiple forms, class style used in different forms in different elements , you can specify the class style used elements in the form
-  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;txt2&quot;; / / specify an id regForm2 form elements using txt2 style.</code></pre>
+  EasyCheck.formDefaultCss [&#39;formId&#39;] ​​= &quot;error2&quot;; // Specifies the id of the form element is formId using .error2 style</code></pre>
 </li>
 </ul>
 <h2 id="6-disable-text-box-style-validation-fails">6 , disable text box style validation fails</h2>
@@ -452,7 +463,9 @@ EasyCheck.errorCss=&quot;easycheck_errorInput&quot;；</code></pre>
 <pre><code class="lang-JS">EasyCheck.msg [&#39;required&#39;] = &quot;is required&quot;;
 EasyCheck.msg [&#39;lengthRange&#39;] = &quot; { 0} is the minimum length , maximum length of { 1} ! &quot; ;</code></pre>
 <p>Name and default value <code>EasyCheck.msg</code> default message list as follows :</p>
-<pre><code class="lang-JS">  required:&quot;Is required&quot;,
+<pre><code class="lang-JS">//msg list
+msg:{
+  required:&quot;Is required&quot;,
   email:&quot;Invalid email&quot;,
   url:&quot;Invalid url&quot;,
   number:&quot;Invalid number&quot;,
@@ -469,7 +482,8 @@ EasyCheck.msg [&#39;lengthRange&#39;] = &quot; { 0} is the minimum length , maxi
   vc:&quot;Didn&#39;t match the word verification&quot;,
 
   lengthrange:&quot;Please use between {0} and {1} characters&quot;,
-  numberrange:&quot;Value is between{0}and{1}&quot;</code></pre>
+  numberrange:&quot;Value is between{0}and{1}&quot;
+}</code></pre>
 <h2 id="8-custom-default-correct-error-message">8 , custom default , correct error message</h2>
 <h3 id="8-1-easycheck-support-each-validation-element-specifies-three-types-of-message-manually-the-default-prompts-error-messages-correct-tip-">8.1,EasyCheck support each validation element specifies three types of message manually : The default prompts , error messages , correct Tip.</h3>
 <p>Provides the following named DIV id can ( if the form element name are the same, using the id to distinguish between form elements exist <code>id</code> attribute , use the <code>XXX_ElementId</code> name takes precedence. ) :</p>
@@ -535,11 +549,11 @@ EasyCheck.msgs[&#39;upwd&#39;]={
 <p>Clear error and clear the correct prompt displays the default prompt.<br>For example, the verification form in the pop-up layer , the layer re-open the closed , all empty layers forms authentication prompt information before .<br><code>formId</code>: Optional. When specified, only the specified form in clear error message ; do not specify , clear the current page for all error messages.</p>
 <pre><code class="lang-JS">    EasyCheck.restoreAll( [formId] );</code></pre>
 <h3 id="9-3-set-the-error-messages-to-the-specified-form-elements-manually-you-can-use-a-unified-style-tips-custom-message-">9.3 , set the error messages to the specified form elements manually (You can use a unified style tips custom message).</h3>
-<p>You can use this method to display the specified message returned from the server .<br><code>elementId | | elementDOM</code>: id specified form elements or form elements DOM object.<br>msg: the error message.</p>
-<pre><code class="lang-JS">    EasyCheck.showError( &#39;elementId&#39;|elementDOM , &#39;msg&#39; );</code></pre>
+<p>You can use this method to display the specified message returned from the server .<br><code>elementId || elementName || elementDOM</code>: id specified form elements or form elements DOM object.<br>msg: the error message.</p>
+<pre><code class="lang-JS">    EasyCheck.showError( &#39;elementId&#39;||&#39;elementName&#39;||elementDOM , &#39;msg&#39; );</code></pre>
 <h3 id="9-4-clear-form-elements-specified-error-message-">9.4 , clear form elements specified error message.</h3>
-<p><code>elementId | | elementDOM</code>: id specified form elements or form elements DOM object.</p>
-<pre><code class="lang-JS">    EasyCheck.clearError( &#39;elementId&#39;|elementDOM  );</code></pre>
+<p><code>elementId || elementName || elementDOM</code>: id specified form elements or form elements DOM object.</p>
+<pre><code class="lang-JS">    EasyCheck.clearError( &#39;elementId&#39;||&#39;elementName&#39;||elementDOM  );</code></pre>
 <h3 id="10-senior-extension-new-custom-validator-plugin-extensions-easycheck-validation-framework">10 , senior extension : New custom validator plugin extensions EasyCheck validation framework</h3>
 <p>EasyCheck has flexible scalability, use <code>EasyCheck.addChk</code> function only easy step to add new custom validator ! </p>
 <h3 id="10-1-a-new-custom-validator-class-attribute-">10.1 , a new custom validator (Class, Attribute)</h3>
@@ -566,7 +580,7 @@ EasyCheck.msgs[&#39;upwd&#39;]={
     ,
     &quot;Authentication failed when the message string&quot;);</code></pre>
 <h3 id="10-2-a-new-combination-of-custom-validator-combination-">10.2 , a new combination of custom validator (Combination):</h3>
-<p>EasyCheck supports the use of multiple combinations of registered validators to create new combinations of validators.<br>Such as: <code>min through a combination of existing properties and</code> max <code>validator validator attribute</code> , digital detection range validator .<br>Validator naming convention is: <code>validator1 validator2</code><br>Example , the combined new validator registered name : <code>[min] [max]</code><br>The validator will be used <strong> when the min and max validator</strong>  in user . </p>
+<p>EasyCheck supports the use of multiple combinations of registered validators to create new combinations of validators.<br>Such as: <code>min through a combination of existing properties and</code> max <code>validator validator attribute</code> , digital detection range validator .<br>Validator naming convention is: <code>validator1 validator2</code><br>Example, the combined new validator registered name <code>[min][max]</code>: This validator <strong>only when the user while using min and max attributes validator </strong>work, the use of a combination of the validator <code>[min]</code> and <code>[max]</code> independent verification control function will be ignored, direct execution <code>[min][max]</code> combination validator validation function.</p>
 <h3 id="10-3-using-the-message-function-to-obtain-the-message-string">10.3 , using the message function to obtain the message string</h3>
 <p>10.3 , using the message function to obtain the message string<br>Some contents of the message with the current value of a property or related form elements , EasyCheck <strong>message function</strong> supports return a message string.</p>
 <pre><code class="lang-JS">EasyCheck.addChk(&quot;validator name&quot;,
@@ -664,7 +678,7 @@ EasyCheck.addChk(&quot;.exists&quot;,
     }
 );</code></pre>
 <p><a href="http://www.lightfeel.com/easy/easycheck/en/index.jsp#demo" title="Demo online">Demo online</a></p>
-<p>Contact, feedback, custom Email: <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x69;&#x6e;&#46;&#x74;&#x68;&#105;&#110;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x69;&#x6e;&#46;&#x74;&#x68;&#105;&#110;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>Contact, feedback, custom Email: <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#105;&#x6e;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#105;&#x6e;&#46;&#x74;&#104;&#x69;&#110;&#x6b;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
 <p><p></p>
 <p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"></p>
 <p><input type="hidden" name="cmd" value="_xclick"></p>
