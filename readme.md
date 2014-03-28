@@ -615,7 +615,7 @@ EasyCheck.addChk(".exists",
 
 [Demo online](http://www.lightfeel.com/easy/easycheck/en/index.jsp#demo 'Demo online')
 
-Contact, feedback, custom Email: <in.think@gmail.com>
+Contact, feedback, custom Email: <inthinkcolor@gmail.com>
 
 <p>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
