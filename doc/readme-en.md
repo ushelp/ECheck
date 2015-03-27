@@ -1,25 +1,35 @@
 
-# ECheck a powerful jQuery plugin to validate online forms
+# ECheck a powerful jQuery plugin to validate forms
 
 
 
-Notice: EasyCheck and ECheck plug-in for the same plug-in. In the early ECheck correspondence in English, EasyCheck corresponding Chinese version after version of `4.0.0`, through language document control, no longer distinguish downloads by region.
+> Notice: EasyCheck and ECheck plug-in for the same plug-in. In the early ECheck correspondence in English, EasyCheck corresponding Chinese version after version of `4.0.0`, through language document control, no longer distinguish downloads by region.
 
 
 EasyCheck aka Echeck, is a front-end based on JS jQuery form validation plugin, without programming through HTML form validation enhancements to complete the work, simplifying the work of front-end development, and to maintain the unity of style to verify and improve efficiency.
 
 **Main features:**
+
 1. Lightweight
+
 2. No JS programming
+
 3. Support class-based, based on a combination of property and validators
-4. Built to meet the daily development of a dozen popular validator
+
+4. Built-in 16 commonly used in daily development Validator
+
 5. Verify that the text box to automatically switch styles
+ 
 6. By default, three kinds of errors and correct the prompt message content DIV
+
 7. Tip custom message location
+
 8. Anti-client resubmit function
+
 9. scalability, support for registered users to develop new validator
 
 **Compatibility:**
+
 EasyDataTable fully compatible with IE6 or later, Firefox, Chrome, Safari, Opera, and other kernel (Trident, Gecko, Webkit, Presto) browser, and is compatible with multiple platforms and systems (PC, TabletPC, Mobile).
 
 ### [The official site](http://www.easyproject.cn/easycheck/en/index.jsp 'EasyCheck  official site home page')
@@ -39,6 +49,7 @@ EasyDataTable fully compatible with IE6 or later, Firefox, Chrome, Safari, Opera
 <script type="text/javascript" src="easycheck/easy.easycheck.js"></script>
 <script type="text/javascript" src="easycheck/lang/easy.easycheck-lang-zh_CN.js"></script>	
 	
+<!--  Optional parameters to customize  -->
 <script type="text/javascript">
 	// Optional Parameters
 	EasyCheck.blurChk=true;    //Verify loses focus when opened , false to disable , default is true

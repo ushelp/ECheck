@@ -1,4 +1,4 @@
-# EasyCheck验证插件使用手册
+# EasyCheck validation plug Manual
 
 > 说明：EasyCheck与ECheck插件为同一插件。在早期ECheck对应英文版，EasyCheck对应中文版，在`4.0.0`版本后，通过语言文件控制，不再按地区区分下载。  
 
@@ -6,14 +6,23 @@
 EasyCheck又名Echeck，是一个基于jQuery的前端JS表单验证插件，无需编程通过HTML增强即可完成表单验证工作，简化前端开发工作，并保持统一验证风格，提高效率。
 
 **主要特点：**
+
 1. 轻量级
+
 2. 无需JS编程
+
 3. 支持基于类、基于属性和组合验证器
-4. 内置能满足日常开发的十多种常用验证器
+
+4. 内置能满足日常开发的16种常用验证器
+
 5. 文本框验证样式自动切换
+
 6. 默认、错误和正确三种DIV提示消息内容
+
 7. 提示消息位置的自定义
+
 8. 防客户端重复提交功能
+
 9. 扩展性，支持用户开发注册新验证器
 
 **兼容性**：
@@ -36,8 +45,8 @@ EasyDataTable完全兼容IE6及以上版本、Firefox、Chrome、Safari、Opera�
 <script type="text/javascript" src="easycheck/easy.easycheck.js"></script>
 <script type="text/javascript" src="easycheck/lang/easy.easycheck-lang-zh_CN.js"></script>
 
+<!-- 可选参数自定义 -->
 <script type="text/javascript">
-	//可选参数
 	EasyCheck.blurChk=true;    //开启失去焦点时验证，false禁用，默认为true
 	EasyCheck.keyupChk=true;  //开启键盘弹起时验证，false禁用，默认为true
 	EasyCheck.loadChk=true;   //页面加载完后是否立即开启验证规则（否则仅在提交表单时验证，如果设置为false，blurChk和keyupChk无效），默认为true
