@@ -4,6 +4,10 @@
 
 EasyCheck aka Echeck, is a front-end based on JS jQuery form validation plugin, without programming through HTML form validation enhancements to complete the work, simplifying the work of front-end development, and to maintain the unity of style to verify and improve efficiency.
 
+![EasyCheck](doc/images/easycheck.png)
+
+![EasyCheck](doc/images/easycheck-engine.png)
+
 **Main features:**
 1. Lightweight
 2. No JS programming
